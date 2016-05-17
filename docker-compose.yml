@@ -1,0 +1,10 @@
+# This is only used for development purposes. You can not use Docker Compose on Heroku.
+web:
+  build: .
+  container_name: origami-image-service-dev
+  volumes:
+    - "./lib:/app/lib"
+  ports:
+    - "8080:8080"
+  env_file: .env
+  command: "nodemon --legacy-watch index.js"

@@ -1,0 +1,40 @@
+{
+  "name": "origami-image-service",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Origami image service",
+  "keywords": [
+    "origami"
+  ],
+  "license": "MIT",
+  "homepage": "https://image.webservices.ft.com/",
+  "bugs": {
+    "url": "https://github.com/Financial-Times/origami-image-service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Financial-Times/origami-image-service.git"
+  },
+  "engines": {
+    "node": "^6"
+  },
+  "main": "./lib/image-service.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4",
+    "require-all": "^2"
+  },
+  "devDependencies": {
+    "chai": "^3",
+    "eslint": "^2",
+    "istanbul": "^0.4",
+    "konstructor-api-client": "1.0.0-alpha.3",
+    "mocha": "^2",
+    "mockery": "^1",
+    "sinon": "^1",
+    "sinon-as-promised": "^4",
+    "supertest": "^1"
+  }
+}
