@@ -15,5 +15,12 @@ const mockApp = module.exports.mockApp = {
 
 const mockServer = module.exports.mockServer = {};
 
+module.exports.mockRequest = {};
+
+module.exports.mockResponse = {
+	send: sinon.stub().returnsThis(),
+	status: sinon.stub().returnsThis()
+};
+
 mockApp.listen.returns(mockServer);
 express.returns(mockApp);

@@ -1,4 +1,3 @@
-// jscs:disable maximumLineLength
 'use strict';
 
 const assert = require('chai').assert;
@@ -9,7 +8,9 @@ const sinon = require('sinon');
 describe('lib/image-service', () => {
 	let basePath;
 	let express;
+	let handleErrors;
 	let imageService;
+	let notFound;
 	let requireAll;
 
 	beforeEach(() => {
@@ -17,6 +18,12 @@ describe('lib/image-service', () => {
 
 		express = require('../mock/express.mock');
 		mockery.registerMock('express', express);
+
+		handleErrors = sinon.stub().returns(sinon.spy());
+		mockery.registerMock('./middleware/handle-errors', handleErrors);
+
+		notFound = sinon.spy();
+		mockery.registerMock('./middleware/not-found', notFound);
 
 		requireAll = require('../mock/require-all.mock');
 		mockery.registerMock('require-all', requireAll);
@@ -29,12 +36,12 @@ describe('lib/image-service', () => {
 	});
 
 	describe('imageService(config)', () => {
+		let config;
 		let returnedPromise;
 		let routes;
-		let userConfig;
 
 		beforeEach(() => {
-			userConfig = {
+			config = {
 				environment: 'test',
 				port: 1234
 			};
@@ -43,7 +50,7 @@ describe('lib/image-service', () => {
 				bar: sinon.spy()
 			};
 			requireAll.returns(routes);
-			returnedPromise = imageService(userConfig);
+			returnedPromise = imageService(config);
 		});
 
 		it('returns a promise', () => {
@@ -55,7 +62,7 @@ describe('lib/image-service', () => {
 		});
 
 		it('sets the Express application `env` to `config.environment`', () => {
-			assert.calledWithExactly(express.mockApp.set, 'env', userConfig.environment);
+			assert.calledWithExactly(express.mockApp.set, 'env', config.environment);
 		});
 
 		it('disables the `X-Powered-By` header', () => {
@@ -84,9 +91,19 @@ describe('lib/image-service', () => {
 			assert.calledWithExactly(route, express.mockApp);
 		});
 
+		it('mounts middleware to handle routes that are not found', () => {
+			assert.calledWith(express.mockApp.use, notFound);
+		});
+
+		it('mounts middleware to handle errors', () => {
+			assert.calledOnce(handleErrors);
+			assert.calledWith(handleErrors, config);
+			assert.calledWith(express.mockApp.use, handleErrors.firstCall.returnValue);
+		});
+
 		it('starts the Express application on the port in `config.port`', () => {
 			assert.calledOnce(express.mockApp.listen);
-			assert.calledWith(express.mockApp.listen, userConfig.port);
+			assert.calledWith(express.mockApp.listen, config.port);
 		});
 
 		describe('.then()', () => {
@@ -114,7 +131,7 @@ describe('lib/image-service', () => {
 			beforeEach(() => {
 				expressError = new Error('Express failed to start');
 				express.mockApp.listen.yieldsAsync(expressError);
-				returnedPromise = imageService(userConfig);
+				returnedPromise = imageService(config);
 			});
 
 			describe('.catch()', () => {

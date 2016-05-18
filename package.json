@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "express": "^4",
+    "http-errors": "^1",
     "require-all": "^2"
   },
   "devDependencies": {
