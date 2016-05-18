@@ -8,7 +8,7 @@ describe('GET /404', () => {
 		request = agent.get('/404');
 	});
 
-	it('responds with a 404 status', done => {
+	it('responds with a 404 Not Found status', done => {
 		request.expect(404).end(done);
 	});
 

@@ -8,7 +8,7 @@ describe('GET /v2/', () => {
 		request = agent.get('/v2/');
 	});
 
-	it('responds with a 200 status', done => {
+	it('responds with a 200 OK status', done => {
 		request.expect(200).end(done);
 	});
 

@@ -8,7 +8,7 @@ describe('GET /', () => {
 		request = agent.get('/');
 	});
 
-	it('responds with a 301 status', done => {
+	it('responds with a 301 Moved Permanently status', done => {
 		request.expect(301).end(done);
 	});
 
