@@ -103,4 +103,16 @@ describe('GET /v2/images/raw…', function() {
 
 	});
 
+	describe('when a transform query parameter is invalid', function() {
+
+		setupRequest('GET', `/v2/images/raw/${testImageUris.http}?source=test&bgcolor=f0`);
+		itRespondsWithStatus(400);
+		itRespondsWithContentType('text/html');
+
+		it('responds with a descriptive error message', function(done) {
+			this.request.expect(/image bgcolor must be a valid hex code or color name/i).end(done);
+		});
+
+	});
+
 });
