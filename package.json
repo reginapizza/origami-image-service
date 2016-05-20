@@ -23,7 +23,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "colornames": "^1.1.1",
+    "cloudinary": "^1",
+    "colornames": "^1",
     "express": "^4",
     "http-errors": "^1",
     "require-all": "^2"
