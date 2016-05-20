@@ -275,8 +275,8 @@ describe('lib/image-transform', () => {
 
 		});
 
-		it('has a `toJSON` method', () => {
-			assert.isFunction(instance.toJSON);
+		it('has an `inspect` method', () => {
+			assert.isFunction(instance.inspect);
 		});
 
 		describe('.inspect()', () => {
@@ -318,6 +318,14 @@ describe('lib/image-transform', () => {
 				testSources.forEach(source => {
 					assert.strictEqual(ImageTransform.sanitizeUriValue(source), source);
 				});
+			});
+
+		});
+
+		describe('when `value` is URL-encoded', () => {
+
+			it('returns `value` decoded', () => {
+				assert.strictEqual(ImageTransform.sanitizeUriValue('http%3A%2F%2Ffoo%2F'), 'http://foo/');
 			});
 
 		});
