@@ -251,6 +251,49 @@ describe('lib/image-transform', () => {
 
 		});
 
+		it('has a `toJSON` method', () => {
+			assert.isFunction(instance.toJSON);
+		});
+
+		describe('.toJSON()', () => {
+
+			it('returns a JSON representation of the object properties', () => {
+				const properties = {
+					uri: 'http://example.com/',
+					width: 123,
+					height: 456,
+					dpr: 2,
+					fit: 'scale-down',
+					quality: 'lossless',
+					format: 'png',
+					bgcolor: '00ff00'
+				};
+				instance = new ImageTransform(properties);
+				properties.quality = 100;
+				assert.deepEqual(instance.toJSON(), properties);
+			});
+
+		});
+
+		it('has a `toJSON` method', () => {
+			assert.isFunction(instance.toJSON);
+		});
+
+		describe('.inspect()', () => {
+
+			it('returns the result of `.toJSON()`', () => {
+				const json = {};
+				instance = new ImageTransform({
+					uri: 'http://example.com/'
+				});
+				sinon.stub(instance, 'toJSON').returns(json);
+				const returnValue = instance.inspect();
+				assert.calledOnce(instance.toJSON);
+				assert.strictEqual(returnValue, json);
+			});
+
+		});
+
 	});
 
 	it('has a `sanitizeUriValue` static method', () => {
