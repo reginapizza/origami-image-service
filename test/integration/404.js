@@ -1,19 +1,11 @@
-/* global agent */
 'use strict';
 
-describe('GET /404', () => {
-	let request;
+const itRespondsWithContentType = require('./helpers/it-responds-with-content-type');
+const itRespondsWithStatus = require('./helpers/it-responds-with-status');
+const setupRequest = require('./helpers/setup-request');
 
-	beforeEach(() => {
-		request = agent.get('/404');
-	});
-
-	it('responds with a 404 Not Found status', done => {
-		request.expect(404).end(done);
-	});
-
-	it('responds with HTML', done => {
-		request.expect('Content-Type', 'text/html; charset=utf-8').end(done);
-	});
-
+describe('GET /404', function() {
+	setupRequest('GET', '/404');
+	itRespondsWithStatus(404);
+	itRespondsWithContentType('text/html');
 });

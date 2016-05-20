@@ -1,21 +1,20 @@
-/* global service */
 'use strict';
 
 const imageService = require('../..');
 const supertest = require('supertest');
 
-before(() => {
+before(function() {
 	return imageService({
 		environment: 'test',
 		logLevel: process.env.LOG_LEVEL || 'trace',
 		port: process.env.PORT || null
 	})
 	.then(service => {
-		global.agent = supertest.agent(service);
-		global.service = service;
+		this.agent = supertest.agent(service);
+		this.service = service;
 	});
 });
 
-after(() => {
-	service.server.close();
+after(function() {
+	this.service.server.close();
 });

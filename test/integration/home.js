@@ -1,19 +1,15 @@
-/* global agent */
 'use strict';
 
-describe('GET /', () => {
-	let request;
+const itRespondsWithStatus = require('./helpers/it-responds-with-status');
+const setupRequest = require('./helpers/setup-request');
 
-	beforeEach(() => {
-		request = agent.get('/');
-	});
+describe('GET /', function() {
 
-	it('responds with a 301 Moved Permanently status', done => {
-		request.expect(301).end(done);
-	});
+	setupRequest('GET', '/');
+	itRespondsWithStatus(301);
 
-	it('redirects the request to the v1 documentation page', done => {
-		request.expect('Location', '/v1/').end(done);
+	it('redirects the request to the v1 documentation page', function(done) {
+		this.request.expect('Location', '/v1/').end(done);
 	});
 
 });

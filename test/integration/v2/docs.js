@@ -1,19 +1,11 @@
-/* global agent */
 'use strict';
 
-describe('GET /v2/', () => {
-	let request;
+const itRespondsWithContentType = require('../helpers/it-responds-with-content-type');
+const itRespondsWithStatus = require('../helpers/it-responds-with-status');
+const setupRequest = require('../helpers/setup-request');
 
-	beforeEach(() => {
-		request = agent.get('/v2/');
-	});
-
-	it('responds with a 200 OK status', done => {
-		request.expect(200).end(done);
-	});
-
-	it('responds with HTML', done => {
-		request.expect('Content-Type', 'text/html; charset=utf-8').end(done);
-	});
-
+describe('GET /v2/', function() {
+	setupRequest('GET', '/v2/');
+	itRespondsWithStatus(200);
+	itRespondsWithContentType('text/html');
 });

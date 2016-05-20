@@ -1,19 +1,11 @@
-/* global agent */
 'use strict';
 
-describe('GET /v1/', () => {
-	let request;
+const itRespondsWithContentType = require('../helpers/it-responds-with-content-type');
+const itRespondsWithStatus = require('../helpers/it-responds-with-status');
+const setupRequest = require('../helpers/setup-request');
 
-	beforeEach(() => {
-		request = agent.get('/v1/');
-	});
-
-	it('responds with a 410 Gone status', done => {
-		request.expect(410).end(done);
-	});
-
-	it('responds with HTML', done => {
-		request.expect('Content-Type', 'text/html; charset=utf-8').end(done);
-	});
-
+describe('GET /v1/', function() {
+	setupRequest('GET', '/v1/');
+	itRespondsWithStatus(410);
+	itRespondsWithContentType('text/html');
 });
