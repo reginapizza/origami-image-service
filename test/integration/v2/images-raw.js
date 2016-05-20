@@ -157,4 +157,53 @@ describe('GET /v2/images/raw…', () => {
 
 	});
 
+	describe('without a `source` query parameter', () => {
+		let request;
+
+		beforeEach(() => {
+			request = agent.get(`/v2/images/raw/${testImageUris.http}`);
+		});
+
+		it('responds with a 400 Bad Request status', done => {
+			request.expect(400).end(done);
+		});
+
+		it('responds with HTML', done => {
+			request.expect('Content-Type', 'text/html; charset=utf-8').end(done);
+		});
+
+		it('responds with a descriptive error message', done => {
+			request.expect(/the source parameter is required/i).end(done);
+		});
+
+	});
+
+	describe('with an `echo` query parameter', () => {
+		let request;
+
+		beforeEach(() => {
+			request = agent.get(`/v2/images/raw/${testImageUris.http}?source=test&width=123&height=456&echo`);
+		});
+
+		it('responds with a 200 status', done => {
+			request.expect(200).end(done);
+		});
+
+		it('responds with JSON', done => {
+			request.expect('Content-Type', 'application/json; charset=utf-8').end(done);
+		});
+
+		it('responds with JSON representing the transforms in the image request', done => {
+			request.expect({
+				fit: 'cover',
+				format: 'jpg',
+				height: 456,
+				quality: 70,
+				uri: testImageUris.http,
+				width: 123
+			}).end(done);
+		});
+
+	});
+
 });
