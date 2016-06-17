@@ -9,6 +9,7 @@ describe('lib/image-service', () => {
 	let basePath;
 	let express;
 	let handleErrors;
+	let httpProxy;
 	let imageService;
 	let notFound;
 	let requireAll;
@@ -21,6 +22,9 @@ describe('lib/image-service', () => {
 
 		handleErrors = sinon.stub().returns(sinon.spy());
 		mockery.registerMock('./middleware/handle-errors', handleErrors);
+
+		httpProxy = require('../mock/http-proxy.mock');
+		mockery.registerMock('http-proxy', httpProxy);
 
 		notFound = sinon.spy();
 		mockery.registerMock('./middleware/not-found', notFound);
@@ -77,6 +81,68 @@ describe('lib/image-service', () => {
 			assert.calledWithExactly(express.mockApp.enable, 'case sensitive routing');
 		});
 
+		it('creates an error handling middleware', () => {
+			assert.calledOnce(handleErrors);
+			assert.calledWith(handleErrors, config);
+		});
+
+		it('creates an HTTP proxy', () => {
+			assert.calledOnce(httpProxy.createProxyServer);
+			assert.calledWithExactly(httpProxy.createProxyServer, {
+				ignorePath: true
+			});
+		});
+
+		it('adds a listener on the HTTP proxy\'s `proxyReq` event', () => {
+			assert.calledWith(httpProxy.mockProxyServer.on, 'proxyReq');
+			// proxy.on('proxyReq', (proxyRequest, request, response, proxyOptions) => {
+			// 	proxyRequest.setHeader('Host', url.parse(proxyOptions.target).host);
+			// });
+		});
+
+		describe('HTTP Proxy `proxyReq` handler', () => {
+			let proxyOptions;
+			let proxyRequest;
+			let request;
+			let response;
+
+			beforeEach(() => {
+				const handler = httpProxy.mockProxyServer.on.withArgs('proxyReq').firstCall.args[1];
+				proxyOptions = {
+					target: 'http://foo.bar/baz/qux'
+				};
+				proxyRequest = httpProxy.mockProxyRequest;
+				request = {};
+				response = {};
+				handler(proxyRequest, request, response, proxyOptions);
+			});
+
+			it('should set the `Host` header of the proxy request to the host in `proxyOptions.target`', () => {
+				assert.calledWithExactly(httpProxy.mockProxyRequest.setHeader, 'Host', 'foo.bar');
+			});
+
+		});
+
+		it('adds a listener on the HTTP proxy\'s `error` event', () => {
+			assert.calledWith(httpProxy.mockProxyServer.on, 'error');
+		});
+
+		describe('HTTP Proxy `error` handler', () => {
+
+			it('should be the created error handling middleware', () => {
+				assert.calledWithExactly(httpProxy.mockProxyServer.on, 'error', handleErrors.firstCall.returnValue);
+			});
+
+		});
+
+		it('sets the Express application `proxy` property to the created HTTP proxy', () => {
+			assert.strictEqual(express.mockApp.proxy, httpProxy.mockProxyServer);
+		});
+
+		it('sets the Express application `imageServiceConfig` property to `config`', () => {
+			assert.strictEqual(express.mockApp.imageServiceConfig, config);
+		});
+
 		it('loads all of the routes', () => {
 			assert.calledOnce(requireAll);
 			assert.isObject(requireAll.firstCall.args[0]);
@@ -96,8 +162,6 @@ describe('lib/image-service', () => {
 		});
 
 		it('mounts middleware to handle errors', () => {
-			assert.calledOnce(handleErrors);
-			assert.calledWith(handleErrors, config);
 			assert.calledWith(express.mockApp.use, handleErrors.firstCall.returnValue);
 		});
 

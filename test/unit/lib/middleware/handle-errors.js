@@ -122,6 +122,27 @@ describe('lib/middleware/handle-errors', () => {
 
 			});
 
+			describe('when the error has a `code` property set to "ENOTFOUND"', () => {
+
+				beforeEach(() => {
+					delete error.status;
+					delete error.message;
+					error.code = 'ENOTFOUND';
+					express.mockResponse.status.reset();
+					middleware(error, express.mockRequest, express.mockResponse, next);
+				});
+
+				it('sets the response status to 502', () => {
+					assert.calledOnce(express.mockResponse.status);
+					assert.calledWithExactly(express.mockResponse.status, 502);
+				});
+
+				it('sets the error message to "Bad Gateway"', () => {
+					assert.strictEqual(error.message, 'Bad Gateway');
+				});
+
+			});
+
 		});
 
 	});

@@ -27,7 +27,9 @@
     "colornames": "^1",
     "express": "^4",
     "http-errors": "^1",
-    "require-all": "^2"
+    "http-proxy": "^1",
+    "require-all": "^2",
+    "statuses": "^1"
   },
   "devDependencies": {
     "chai": "^3",

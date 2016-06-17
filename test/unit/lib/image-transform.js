@@ -241,7 +241,7 @@ describe('lib/image-transform', () => {
 				assert.calledWithExactly(
 					ImageTransform.sanitizeColorValue,
 					'foo',
-					`Image bgcolor must be a valid hex code or color name`
+					'Image bgcolor must be a valid hex code or color name'
 				);
 			});
 
