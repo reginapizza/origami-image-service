@@ -89,15 +89,13 @@ describe('lib/image-service', () => {
 		it('creates an HTTP proxy', () => {
 			assert.calledOnce(httpProxy.createProxyServer);
 			assert.calledWithExactly(httpProxy.createProxyServer, {
-				ignorePath: true
+				ignorePath: true,
+				secure: false
 			});
 		});
 
 		it('adds a listener on the HTTP proxy\'s `proxyReq` event', () => {
 			assert.calledWith(httpProxy.mockProxyServer.on, 'proxyReq');
-			// proxy.on('proxyReq', (proxyRequest, request, response, proxyOptions) => {
-			// 	proxyRequest.setHeader('Host', url.parse(proxyOptions.target).host);
-			// });
 		});
 
 		describe('HTTP Proxy `proxyReq` handler', () => {
