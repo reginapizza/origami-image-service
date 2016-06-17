@@ -15,7 +15,7 @@ describe('lib/transformers/cloudinary', () => {
 		assert.isFunction(cloudinaryTransform);
 	});
 
-	describe('cloudinaryTransform(transform)', () => {
+	describe('cloudinaryTransform(transform, options)', () => {
 		let cloudinaryUrl;
 		let options;
 		let transform;
@@ -154,7 +154,7 @@ describe('lib/transformers/cloudinary', () => {
 		describe('when `transform` is not an instance of ImageTransform', () => {
 
 			it('throws an error', () => {
-				assert.throws(() => cloudinaryTransform('foo'), 'Invalid transfor argument, expected an ImageTransform object');
+				assert.throws(() => cloudinaryTransform('foo'), 'Invalid transform argument, expected an ImageTransform object');
 			});
 
 		});

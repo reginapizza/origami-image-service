@@ -28,6 +28,7 @@
     "express": "^4",
     "http-errors": "^1",
     "http-proxy": "^1",
+    "imgix-core-js": "^1",
     "require-all": "^2",
     "statuses": "^1"
   },
