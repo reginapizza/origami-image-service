@@ -96,7 +96,7 @@ make attach-dev
 Configuration
 -------------
 
-We configure Origami Image Service using environment variables. In development, configurations are set in `docker-compose.yml`. In production, these are set through Heroku config.
+We configure Origami Image Service using environment variables. In development, configurations are set in a `.env` file. In production, these are set through Heroku config.
 
   * `PORT`: The port to run the application on.
   * `NODE_ENV`: The environment to run the application in. One of `production`, `development` (default), or `test` (for use in automated tests).
