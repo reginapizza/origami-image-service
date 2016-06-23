@@ -3,8 +3,9 @@ web:
   build: .
   container_name: origami-image-service-dev
   volumes:
+    - "./docs:/app/docs"
     - "./lib:/app/lib"
   ports:
     - "8080:8080"
   env_file: .env
-  command: "nodemon --legacy-watch index.js"
+  command: "nodemon --legacy-watch --ext html,js,json index.js"
