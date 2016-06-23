@@ -24,7 +24,7 @@ deployment:
   production:
     branch: master
     commands:
-      - 'echo "machine api.heroku.com login rowan.manning@ft.com password ${HEROKU_AUTH_TOKEN}" >> ${HOME}/.netrc; chmod 0600 /home/ubuntu/.netrc;'
+      - 'echo "machine api.heroku.com login rowan.manning@ft.com password ${HEROKU_AUTH_TOKEN}" >> ${HOME}/.netrc; chmod 0600 ${HOME}/.netrc;'
       - 'docker login --email=_ --username=_ --password=$(heroku auth:token) registry.heroku.com'
       - 'make deploy'
-      - 'make change-request-qa'
+      # - 'make change-request-qa'

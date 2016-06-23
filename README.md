@@ -17,7 +17,7 @@ Table Of Contents
   * [Running Locally](#running-locally)
   * [Configuration](#configuration)
   * [Testing](#testing)
-  * Deployment [TODO]
+  * [Deployment](#deployment)
   * Monitoring [TODO]
   * Trouble-Shooting [TODO]
   * [Project Structure](#project-structure)
@@ -133,6 +133,36 @@ make verify
 ```
 
 We run the tests and linter on CI, you can view [results on CircleCI][ci]. `make test` and `make lint` must pass before we merge a pull request.
+
+
+Deployment
+----------
+
+The [production][heroku-production] and [QA][heroku-qa] applications run on [Heroku]. We deploy continuously to QA via [CircleCI][ci], you should never need to deploy to QA manually. ~~We use a [Heroku pipeline][heroku-pipeline] to promote QA deployments to production~~.
+
+:warning: We have to deploy to production manually while we wait for Heroku Docker/pipeline support. You'll need access to the Heroku Docker private beta, and to have logged into the registry.
+
+Run the following command exactly, don't replace the underscores in username and password:
+
+```sh
+docker login --email=_ --username=_ --password=$(heroku auth:token) registry.heroku.com
+```
+
+You'll need to provide your GitHub username for change request logging, ensure you've been [added to this spreadsheet][developer-spreadsheet]. Now deploy the last QA image by running the following, avoiding having to build locally:
+
+```sh
+GITHUB_USERNAME=yourgithubusername make promote
+```
+
+We use [Semantic Versioning][semver] to tag releases. Only tagged releases should hit production, this ensures that the `__about` endpoint is informative. To tag a new release, use one of the following (this is the only time we allow a commit directly to `master`):
+
+```sh
+npm version major
+npm version minor
+npm version patch
+```
+
+Now you can push to GitHub (`git push && git push --tags`) which will trigger a QA deployment. Once QA has deployed with the newly tagged version, you can promote it to production.
 
 
 Project Structure
