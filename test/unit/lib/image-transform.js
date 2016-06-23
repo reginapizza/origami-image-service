@@ -203,16 +203,15 @@ describe('lib/image-transform', () => {
 		describe('.quality', () => {
 
 			beforeEach(() => {
-				sinon.stub(ImageTransform, 'sanitizeEnumerableValue').returns('sanitized');
-				ImageTransform.qualityValueMap.sanitized = 123;
-				instance.quality = 'foo';
+				sinon.stub(ImageTransform, 'sanitizeEnumerableValue').returns('lossless');
+				instance.quality = 'lossless';
 			});
 
 			it('[set] calls the `sanitizeEnumerableValue` static method with `value`', () => {
 				assert.calledOnce(ImageTransform.sanitizeEnumerableValue);
 				assert.calledWithExactly(
 					ImageTransform.sanitizeEnumerableValue,
-					'foo',
+					'lossless',
 					ImageTransform.validQualities,
 					`Image quality must be one of ${ImageTransform.validQualities.join(', ')}`
 				);
@@ -224,7 +223,7 @@ describe('lib/image-transform', () => {
 			});
 
 			it('[get] returns a numeric representation of the sanitized `value`', () => {
-				assert.strictEqual(instance.quality, 123);
+				assert.strictEqual(instance.quality, 100);
 			});
 
 		});
