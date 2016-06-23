@@ -4,6 +4,8 @@ Origami Image Service
 
 Optimises and resize images. See [the production service][image-service] for API information.
 
+**:warning: Note: this is a work in progress version of a proxy-based image service. It's not ready for production use, and we may not go in this direction anyway. Consider this prototypal.**
+
 [![Build status](https://img.shields.io/circleci/project/Financial-Times/origami-image-service.svg)][ci]
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)][license]
 
