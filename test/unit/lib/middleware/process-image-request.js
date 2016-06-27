@@ -50,7 +50,6 @@ describe('lib/middleware/process-image-request', () => {
 		});
 
 		describe('middleware(request, response, next)', () => {
-			let error;
 			let mockImageTransform;
 			let next;
 
@@ -170,8 +169,6 @@ describe('lib/middleware/process-image-request', () => {
 				});
 
 			});
-
-			cloudinaryTransform
 
 		});
 
