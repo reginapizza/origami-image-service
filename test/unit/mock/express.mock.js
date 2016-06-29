@@ -10,7 +10,8 @@ const mockApp = module.exports.mockApp = {
 	get: sinon.stub(),
 	listen: sinon.stub().yieldsAsync(),
 	set: sinon.stub(),
-	use: sinon.stub()
+	use: sinon.stub(),
+	locals: sinon.stub()
 };
 
 const mockServer = module.exports.mockServer = {};
