@@ -5,7 +5,6 @@ web:
   volumes:
     - "./docs:/app/docs"
     - "./lib:/app/lib"
-    - "./public:/app/public"
   ports:
     - "8080:8080"
   env_file: .env

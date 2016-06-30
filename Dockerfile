@@ -8,7 +8,6 @@ RUN echo '[url "https://"]\n    insteadOf = git://' > /app/.gitconfig
 
 # n-express deps
 RUN apk add --update git
-COPY .gitignore /app/
 
 # Install Node.js dependencies
 COPY package.json /app/

@@ -47,7 +47,7 @@ deploy: build
 	@docker push $(DOCKER_REGISTRY_ENDPOINT_QA)
 	@$(DONE)
 
-build: public/__about.json #HACK: Empty Procfile in order to get this to build from n.Makefile
+build:
 	@docker build -t $(DOCKER_REGISTRY_ENDPOINT_QA) .
 	@$(DONE)
 
