@@ -25,7 +25,7 @@
   "dependencies": {
     "cloudinary": "^1",
     "colornames": "^1",
-    "express": "^4",
+    "@financial-times/n-express": "^16",
     "http-errors": "^1",
     "http-proxy": "^1",
     "imgix-core-js": "^1",

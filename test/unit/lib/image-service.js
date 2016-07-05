@@ -17,8 +17,8 @@ describe('lib/image-service', () => {
 	beforeEach(() => {
 		basePath = path.resolve(`${__dirname}/../../..`);
 
-		express = require('../mock/express.mock');
-		mockery.registerMock('express', express);
+		express = require('../mock/n-express.mock');
+		mockery.registerMock('@financial-times/n-express', express);
 
 		handleErrors = sinon.stub().returns(sinon.spy());
 		mockery.registerMock('./middleware/handle-errors', handleErrors);
@@ -63,22 +63,6 @@ describe('lib/image-service', () => {
 
 		it('creates an Express application', () => {
 			assert.calledOnce(express);
-		});
-
-		it('sets the Express application `env` to `config.environment`', () => {
-			assert.calledWithExactly(express.mockApp.set, 'env', config.environment);
-		});
-
-		it('disables the `X-Powered-By` header', () => {
-			assert.calledWithExactly(express.mockApp.disable, 'x-powered-by');
-		});
-
-		it('enables strict routing', () => {
-			assert.calledWithExactly(express.mockApp.enable, 'strict routing');
-		});
-
-		it('enables case sensitive routing', () => {
-			assert.calledWithExactly(express.mockApp.enable, 'case sensitive routing');
 		});
 
 		it('creates an error handling middleware', () => {
@@ -226,7 +210,7 @@ describe('lib/image-service', () => {
 
 			beforeEach(() => {
 				expressError = new Error('Express failed to start');
-				express.mockApp.listen.yieldsAsync(expressError);
+				express.mockApp.listen.rejects(expressError);
 				returnedPromise = imageService(config);
 			});
 

@@ -6,6 +6,9 @@ WORKDIR /app
 # Configure git to use HTTPS instead of SSH
 RUN echo '[url "https://"]\n    insteadOf = git://' > /app/.gitconfig
 
+# n-express deps
+RUN apk add --update git
+
 # Install Node.js dependencies
 COPY package.json /app/
 RUN npm install -g nodemon && npm install --production && npm cache clean

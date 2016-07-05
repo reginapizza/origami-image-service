@@ -3,7 +3,6 @@
 .eslintignore
 .eslintrc
 .git
-.gitignore
 circle.yml
 coverage
 docker-compose.yml

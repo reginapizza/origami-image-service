@@ -1,6 +1,7 @@
 'use strict';
 
 const sinon = require('sinon');
+require('sinon-as-promised');
 
 const express = module.exports = sinon.stub();
 
@@ -8,7 +9,7 @@ const mockApp = module.exports.mockApp = {
 	disable: sinon.stub(),
 	enable: sinon.stub(),
 	get: sinon.stub(),
-	listen: sinon.stub().yieldsAsync(),
+	listen: sinon.stub(),
 	set: sinon.stub(),
 	use: sinon.stub()
 };
@@ -25,5 +26,5 @@ module.exports.mockResponse = {
 	status: sinon.stub().returnsThis()
 };
 
-mockApp.listen.returns(mockServer);
+mockApp.listen.resolves(mockServer);
 express.returns(mockApp);

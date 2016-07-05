@@ -10,7 +10,7 @@ describe('lib/middleware/handle-errors', () => {
 
 	beforeEach(() => {
 
-		express = require('../../mock/express.mock');
+		express = require('../../mock/n-express.mock');
 		mockery.registerMock('express', express);
 
 		handleErrors = require('../../../../lib/middleware/handle-errors');
