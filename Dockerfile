@@ -3,11 +3,12 @@ FROM mhart/alpine-node:6
 # Set the working directory
 WORKDIR /app
 
+# Install additional dependencies required to build modules
+# We need these to build native dependencies and for n-express to run
+RUN apk add --no-cache --update git && rm -rf /var/cache/apk/*
+
 # Configure git to use HTTPS instead of SSH
 RUN echo '[url "https://"]\n    insteadOf = git://' > /app/.gitconfig
-
-# n-express deps
-RUN apk add --update git
 
 # Install Node.js dependencies
 COPY package.json /app/
