@@ -37,6 +37,8 @@ module.exports = {
 		"before": true,
 		"beforeEach": true,
 		"describe": true,
-		"it": true
+		"it": true,
+		"xdescribe": true,
+		"xit": true
 	}
 }
