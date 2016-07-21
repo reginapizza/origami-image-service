@@ -7,7 +7,7 @@ const setupRequest = require('../helpers/setup-request');
 const testImageUris = {
 	ftcms: 'ftcms:6c5a2f8c-18ca-4afa-80ff-7d56e41172b1',
 	fthead: 'fthead:martin-wolf',
-	fticon: 'fticon:brand-ft',
+	fticon: 'fticon:cross',
 	ftlogo: 'ftlogo:brand-ft',
 	ftpodcast: 'ftpodcast:arts',
 	ftsocial: 'ftsocial:whatsapp',
@@ -42,29 +42,29 @@ describe('GET /v2/images/raw…', function() {
 		itRespondsWithStatus(501);
 	});
 
-	describe('/fticon:… (fticon scheme)', function() {
+	xdescribe('/fticon:… (fticon scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.fticon}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
-	describe('/fthead:… (fthead scheme)', function() {
+	xdescribe('/fthead:… (fthead scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.fthead}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
-	describe('/ftsocial:… (ftsocial scheme)', function() {
+	xdescribe('/ftsocial:… (ftsocial scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftsocial}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
-	describe('/ftpodcast:… (ftpodcast scheme)', function() {
+	xdescribe('/ftpodcast:… (ftpodcast scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftpodcast}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
-	describe('/ftlogo:… (ftlogo scheme)', function() {
+	xdescribe('/ftlogo:… (ftlogo scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftlogo}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
 	describe('?imageset=… (image set)', function() {

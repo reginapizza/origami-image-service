@@ -294,6 +294,14 @@ describe('lib/image-transform', () => {
 
 		});
 
+		describe('when `value` is a string without a scheme', () => {
+
+			it('throws an error', () => {
+				assert.throws(() => ImageTransform.sanitizeUriValue('foo'), 'Expected a URI string with a valid scheme');
+			});
+
+		});
+
 		describe('when `value` is not a string', () => {
 
 			it('throws an error', () => {
@@ -491,6 +499,213 @@ describe('lib/image-transform', () => {
 
 			it('the message can be set with a third parameter', () => {
 				assert.throws(() => ImageTransform.sanitizeColorValue('0f', 'foo'), 'foo');
+			});
+
+		});
+
+	});
+
+	it('has a `resolveCustomSchemeUri` static method', () => {
+		assert.isFunction(ImageTransform.resolveCustomSchemeUri);
+	});
+
+	describe('.resolveCustomSchemeUri(uri, baseUrl)', () => {
+
+		describe('when `uri` is an `ftcms` URI', () => {
+
+			it('returns `uri`', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('ftcms:example', 'http://base/images'),
+					'ftcms:example'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `fthead` URI', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fthead:example', 'http://base/images'),
+					'http://base/images/fthead/unversioned/example.png'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `fticon` URI', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon:example', 'http://base/images'),
+					'http://base/images/fticon/unversioned/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `ftlogo` URI', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('ftlogo:example', 'http://base/images'),
+					'http://base/images/ftlogo/unversioned/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `ftpodcast` URI', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('ftpodcast:example', 'http://base/images'),
+					'http://base/images/ftpodcast/unversioned/example.png'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `ftsocial` URI', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('ftsocial:example', 'http://base/images'),
+					'http://base/images/ftsocial/unversioned/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `http` URI', () => {
+
+			it('returns `uri`', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('http://foo/bar', 'http://base/images'),
+					'http://foo/bar'
+				);
+			});
+
+		});
+
+		describe('when `uri` is an `https` URI', () => {
+
+			it('returns `uri`', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('https://foo/bar', 'http://base/images'),
+					'https://foo/bar'
+				);
+			});
+
+		});
+
+		describe('when `uri` has a versioned scheme', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon-v1:example', 'http://base/images'),
+					'http://base/images/fticon/v1/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` has an uppercase scheme', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('FTICON:example', 'http://base/images'),
+					'http://base/images/fticon/unversioned/example.svg'
+				);
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('FTICON-V1:example', 'http://base/images'),
+					'http://base/images/fticon/v1/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` has a path', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon:example/foo', 'http://base/images'),
+					'http://base/images/fticon/unversioned/example/foo.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` has a path with a trailing slash', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon:example/foo/', 'http://base/images'),
+					'http://base/images/fticon/unversioned/example/foo.svg'
+				);
+			});
+
+		});
+
+		describe('when `uri` has a path with a file extension prepopulated', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon:foo.svg', 'http://base/images'),
+					'http://base/images/fticon/unversioned/foo.svg'
+				);
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fthead:foo.png', 'http://base/images'),
+					'http://base/images/fthead/unversioned/foo.png'
+				);
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fthead:foo.jpg', 'http://base/images'),
+					'http://base/images/fthead/unversioned/foo.jpg'
+				);
+			});
+
+		});
+
+		describe('when `baseUrl` has a trailing slash', () => {
+
+			it('returns the expected URI', () => {
+				assert.strictEqual(
+					ImageTransform.resolveCustomSchemeUri('fticon:example', 'http://base/images/'),
+					'http://base/images/fticon/unversioned/example.svg'
+				);
+			});
+
+		});
+
+		describe('when `baseUrl` is not defined', () => {
+
+			it('throws an error', () => {
+				assert.throws(() => {
+					ImageTransform.resolveCustomSchemeUri('foo:example');
+				}, 'Base URL must be a valid URL');
+			});
+
+		});
+
+		describe('when `uri` has an invalid scheme', () => {
+
+			it('throws an error', () => {
+				assert.throws(() => {
+					ImageTransform.resolveCustomSchemeUri('foo:example', 'http://base/images');
+				}, 'Image URI must be a string with a valid scheme');
+			});
+
+		});
+
+		describe('when `uri` doesn\'t have a hostname', () => {
+
+			it('throws an error', () => {
+				assert.throws(() => {
+					ImageTransform.resolveCustomSchemeUri('fticon:', 'http://base/images');
+				}, 'Image URI must be a string with a valid scheme');
+				assert.throws(() => {
+					ImageTransform.resolveCustomSchemeUri('fticon', 'http://base/images');
+				}, 'Image URI must be a string with a valid scheme');
 			});
 
 		});

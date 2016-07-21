@@ -6,6 +6,7 @@ const supertest = require('supertest');
 before(function() {
 	return imageService({
 		cloudinaryAccountName: 'financial-times', // TODO set up a test account for this?
+		customSchemeStore: 'http://example.com/images',
 		environment: 'test',
 		logLevel: process.env.LOG_LEVEL || 'trace',
 		port: process.env.PORT || null
