@@ -39,7 +39,7 @@ describe('GET /v2/images/raw…', function() {
 
 	describe('/ftcms:… (ftcms scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftcms}?source=test`);
-		itRespondsWithStatus(501);
+		itRespondsWithStatus(200);
 	});
 
 	xdescribe('/fticon:… (fticon scheme)', function() {
