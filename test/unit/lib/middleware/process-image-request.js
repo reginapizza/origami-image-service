@@ -14,7 +14,6 @@ describe('lib/middleware/process-image-request', () => {
 	beforeEach(() => {
 
 		express = require('../../mock/n-express.mock');
-		mockery.registerMock('express', express);
 
 		ImageTransform = sinon.stub();
 		mockery.registerMock('../image-transform', ImageTransform);

@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('chai').assert;
-const mockery = require('mockery');
 const sinon = require('sinon');
 
 describe('lib/middleware/handle-errors', () => {
@@ -11,7 +10,6 @@ describe('lib/middleware/handle-errors', () => {
 	beforeEach(() => {
 
 		express = require('../../mock/n-express.mock');
-		mockery.registerMock('express', express);
 
 		handleErrors = require('../../../../lib/middleware/handle-errors');
 	});
