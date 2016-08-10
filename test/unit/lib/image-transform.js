@@ -37,7 +37,8 @@ describe('lib/image-transform', () => {
 				fit: 'scale-down',
 				quality: 'lossless',
 				format: 'png',
-				bgcolor: '00ff00'
+				bgcolor: '00ff00',
+				tint: 'f00,00f'
 			};
 			instance = new ImageTransform(properties);
 			assert.strictEqual(instance.getUri(), properties.uri);
@@ -48,6 +49,7 @@ describe('lib/image-transform', () => {
 			assert.strictEqual(instance.getQuality(), ImageTransform.qualityValueMap[properties.quality]);
 			assert.strictEqual(instance.getFormat(), properties.format);
 			assert.strictEqual(instance.getBgcolor(), properties.bgcolor);
+			assert.deepEqual(instance.getTint(), ['ff0000', '0000ff']);
 		});
 
 		describe('.setUri() / .getUri()', () => {
@@ -257,6 +259,28 @@ describe('lib/image-transform', () => {
 
 			it('[get] returns the sanitized `value`', () => {
 				assert.strictEqual(instance.getBgcolor(), 'sanitized');
+			});
+
+		});
+
+		describe('.setTint() / .getTint()', () => {
+
+			beforeEach(() => {
+				sinon.stub(ImageTransform, 'sanitizeColorListValue').returns('sanitized');
+				instance.setTint('foo');
+			});
+
+			it('[set] calls the `sanitizeColorListValue` static method with `value`', () => {
+				assert.calledOnce(ImageTransform.sanitizeColorListValue);
+				assert.calledWithExactly(
+					ImageTransform.sanitizeColorListValue,
+					'foo',
+					'Image tint must be a comma-delimited list of valid hex codes and color names'
+				);
+			});
+
+			it('[get] returns the sanitized `value`', () => {
+				assert.strictEqual(instance.getTint(), 'sanitized');
 			});
 
 		});
@@ -496,6 +520,14 @@ describe('lib/image-transform', () => {
 
 		});
 
+		describe('when `value` contains additional whitespace', () => {
+
+			it('returns `value` with whitespace removed', () => {
+				assert.strictEqual(ImageTransform.sanitizeColorValue(' ff0000 '), 'ff0000');
+			});
+
+		});
+
 		describe('when `value` is not a valid hex color or named color', () => {
 
 			it('throws an error', () => {
@@ -508,8 +540,75 @@ describe('lib/image-transform', () => {
 
 		describe('when an error is thrown', () => {
 
-			it('the message can be set with a third parameter', () => {
+			it('the message can be set with a second parameter', () => {
 				assert.throws(() => ImageTransform.sanitizeColorValue('0f', 'foo'), 'foo');
+			});
+
+		});
+
+	});
+
+	it('has a `sanitizeColorListValue` static method', () => {
+		assert.isFunction(ImageTransform.sanitizeColorListValue);
+	});
+
+	describe('.sanitizeColorListValue(value)', () => {
+
+		beforeEach(() => {
+			sinon.spy(ImageTransform, 'sanitizeColorValue');
+		});
+
+		describe('when `value` is a valid hex code', () => {
+
+			it('returns an array containing `value`', () => {
+				assert.deepEqual(ImageTransform.sanitizeColorListValue('ff0000'), ['ff0000']);
+			});
+
+		});
+
+		describe('when `value` is a comma-delimited list of valid hex codes', () => {
+
+			it('returns an array containing `value` split on commas', () => {
+				assert.deepEqual(ImageTransform.sanitizeColorListValue('ff0000,00ff00'), ['ff0000', '00ff00']);
+			});
+
+			it('calls `sanitizeColorValue` with each hex code', () => {
+				ImageTransform.sanitizeColorListValue('ff0000,00ff00');
+				assert.calledTwice(ImageTransform.sanitizeColorValue);
+				assert.calledWith(ImageTransform.sanitizeColorValue, 'ff0000');
+				assert.calledWith(ImageTransform.sanitizeColorValue, '00ff00');
+			});
+
+		});
+
+		describe('when `value` contains additional whitespace', () => {
+
+			it('returns an array containing `value` split on commas with whitespace removed', () => {
+				assert.deepEqual(ImageTransform.sanitizeColorListValue(' ff0000 , 00ff00 '), ['ff0000', '00ff00']);
+			});
+
+		});
+
+		describe('when `value` is `undefined`', () => {
+
+			it('returns `undefined`', () => {
+				assert.isUndefined(ImageTransform.sanitizeColorListValue());
+			});
+
+		});
+
+		describe('when `value` contains an invalid hex color or named color', () => {
+
+			it('throws an error', () => {
+				assert.throws(() => ImageTransform.sanitizeColorListValue('ff0000,0f'), 'Expected a list of valid colors');
+			});
+
+		});
+
+		describe('when an error is thrown', () => {
+
+			it('the message can be set with a second parameter', () => {
+				assert.throws(() => ImageTransform.sanitizeColorListValue('0f', 'foo'), 'foo');
 			});
 
 		});

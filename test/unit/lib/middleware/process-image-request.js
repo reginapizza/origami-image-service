@@ -102,21 +102,21 @@ describe('lib/middleware/process-image-request', () => {
 				assert.calledWithExactly(next);
 			});
 
-			describe('when the image transform format is "svg" and `request.query.tint` is set', () => {
+			describe('when the image transform format is "svg" and tint is set', () => {
 
 				beforeEach(() => {
 					mockImageTransform.format = 'svg';
+					mockImageTransform.tint = ['ff0000'];
 					mockImageTransform.uri = 'transform-uri?foo';
 					mockImageTransform.setUri = sinon.spy();
 					express.mockRequest.protocol = 'proto';
 					express.mockRequest.hostname = 'hostname';
-					express.mockRequest.query.tint = 'f00';
 					middleware(express.mockRequest, express.mockResponse, next);
 				});
 
 				it('sets the image transform `uri` property to route through the SVG tinter', () => {
 					assert.calledOnce(mockImageTransform.setUri);
-					assert.strictEqual(mockImageTransform.setUri.firstCall.args[0], 'proto://hostname/v2/images/svgtint/transform-uri%3Ffoo?color=f00');
+					assert.strictEqual(mockImageTransform.setUri.firstCall.args[0], 'proto://hostname/v2/images/svgtint/transform-uri%3Ffoo?color=ff0000');
 				});
 
 				describe('when `config.hostname` is set', () => {
@@ -129,7 +129,7 @@ describe('lib/middleware/process-image-request', () => {
 
 					it('sets the image transform `uri` property to route through the SVG tinter', () => {
 						assert.calledOnce(mockImageTransform.setUri);
-						assert.strictEqual(mockImageTransform.setUri.firstCall.args[0], 'proto://config-hostname/v2/images/svgtint/transform-uri%3Ffoo?color=f00');
+						assert.strictEqual(mockImageTransform.setUri.firstCall.args[0], 'proto://config-hostname/v2/images/svgtint/transform-uri%3Ffoo?color=ff0000');
 					});
 
 				});
