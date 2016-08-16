@@ -597,6 +597,14 @@ describe('lib/image-transform', () => {
 
 		});
 
+		describe('when `value` is an empty string', () => {
+
+			it('returns an array containing "fff1e0"', () => {
+				assert.deepEqual(ImageTransform.sanitizeColorListValue(''), ['fff1e0']);
+			});
+
+		});
+
 		describe('when `value` contains an invalid hex color or named color', () => {
 
 			it('throws an error', () => {

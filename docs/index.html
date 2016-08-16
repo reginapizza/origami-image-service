@@ -213,6 +213,18 @@
 								<p>Fallback background colour to apply when the output image format does not support transparency (i.e., JPEG). Ignored if the image supports transparency. Specified as three- or six-character RGB hex code, e.g. <code>00ff00</code></p>
 							</td>
 						</tr>
+						<tr id="tint">
+							<td><code>tint</code></td>
+							<td>Querystring</td>
+							<td>
+								<p>Replaces colours in the image. Tinting only works when the source image is an SVG, and colours can be either hex codes or named colours. Different numbers of colours (separated by commas) behave differently:</p>
+								<ol start="0">
+									<li>The <code>tint</code> parameter used with no value (no colours given) tints the image with FT's "pink" colour.</li>
+									<li>When given one colour, e.g. <code>fff1e0</code>, it tints the image with the given colour.</li>
+									<li>When given two or more colours, e.g. <code>fff1e0,ff0000</code>, it tints the image with the first colour. This behaviour is in place to reduce work when migrating between versions 1 and 2 of the image service, and should be considered deprecated.</li>
+								</ol>
+							</td>
+						</tr>
 						<tr id="format">
 							<td><code>format</code></td>
 							<td>Querystring</td>
