@@ -90,7 +90,7 @@ We run the tests and linter on CI, you can view [results on CircleCI][ci]. `make
 Deployment
 ----------
 
-The [production][heroku-production] and [QA][heroku-qa] applications run on [Heroku]. We deploy continuously to QA via [CircleCI][ci], you should never need to deploy to QA manually. We use a [Heroku pipeline][heroku-pipeline] to promote QA deployments to production, this can be done with:
+The [production][heroku-production] and [QA][heroku-qa] applications run on [Heroku]. We deploy continuously to QA via [CircleCI][ci], you should never need to deploy to QA manually. We use a [Heroku pipeline][heroku-pipeline] to promote QA deployments to production.
 
 You'll need to provide your GitHub username for change request logging, ensure you've been [added to this spreadsheet][developer-spreadsheet]. Now deploy the last QA image by running the following:
 
@@ -123,9 +123,7 @@ The Financial Times has published this software under the [MIT license][license]
 [heroku-production]: https://dashboard.heroku.com/apps/origami-image-service
 [heroku-qa]: https://dashboard.heroku.com/apps/origami-image-service-qa
 [heroku]: https://heroku.com/
-[homebrew]: http://brew.sh/
 [license]: http://opensource.org/licenses/MIT
 [node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
 [semver]: http://semver.org/
-[virtualbox]: https://www.virtualbox.org/
