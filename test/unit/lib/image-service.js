@@ -3,6 +3,7 @@
 const assert = require('chai').assert;
 const mockery = require('mockery');
 const path = require('path');
+const pkg = require('../../../package.json');
 const sinon = require('sinon');
 
 describe('lib/image-service', () => {
@@ -105,6 +106,14 @@ describe('lib/image-service', () => {
 
 			it('should set the `Host` header of the proxy request to the host in `proxyOptions.target`', () => {
 				assert.calledWithExactly(httpProxy.mockProxyRequest.setHeader, 'Host', 'foo.bar');
+			});
+
+			it('should set the `User-Agent` header of the proxy request to the image service name/version', () => {
+				assert.calledWithExactly(httpProxy.mockProxyRequest.setHeader, 'User-Agent', `${pkg.name}/${pkg.version}`);
+			});
+
+			it('should remove the `Cookie` header of the proxy request', () => {
+				assert.calledWithExactly(httpProxy.mockProxyRequest.removeHeader, 'Cookie');
 			});
 
 		});
