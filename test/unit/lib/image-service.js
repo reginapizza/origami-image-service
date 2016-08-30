@@ -3,6 +3,7 @@
 const assert = require('chai').assert;
 const mockery = require('mockery');
 const path = require('path');
+const pkg = require('../../../package.json');
 const sinon = require('sinon');
 
 describe('lib/image-service', () => {
@@ -98,13 +99,40 @@ describe('lib/image-service', () => {
 					target: 'http://foo.bar/baz/qux'
 				};
 				proxyRequest = httpProxy.mockProxyRequest;
-				request = {};
+				request = {
+					headers: {
+						'accept-encoding': 'bar',
+						'accept-language': 'baz',
+						'accept': 'foo',
+						'cookie': 'qux',
+						'host': 'www.example.com',
+						'user-agent': 'test',
+						'x-identifying-information': 'oops'
+					}
+				};
 				response = {};
 				handler(proxyRequest, request, response, proxyOptions);
 			});
 
+			it('should remove all non-whitelisted headers from the proxy request', () => {
+				assert.calledWithExactly(httpProxy.mockProxyRequest.removeHeader, 'cookie');
+				assert.calledWithExactly(httpProxy.mockProxyRequest.removeHeader, 'host');
+				assert.calledWithExactly(httpProxy.mockProxyRequest.removeHeader, 'user-agent');
+				assert.calledWithExactly(httpProxy.mockProxyRequest.removeHeader, 'x-identifying-information');
+			});
+
+			it('should leave all whitelisted headers from the proxy request intact', () => {
+				assert.neverCalledWith(httpProxy.mockProxyRequest.removeHeader, 'accept-encoding');
+				assert.neverCalledWith(httpProxy.mockProxyRequest.removeHeader, 'accept-language');
+				assert.neverCalledWith(httpProxy.mockProxyRequest.removeHeader, 'accept');
+			});
+
 			it('should set the `Host` header of the proxy request to the host in `proxyOptions.target`', () => {
 				assert.calledWithExactly(httpProxy.mockProxyRequest.setHeader, 'Host', 'foo.bar');
+			});
+
+			it('should set the `User-Agent` header of the proxy request to the image service name/version', () => {
+				assert.calledWithExactly(httpProxy.mockProxyRequest.setHeader, 'User-Agent', `${pkg.name}/${pkg.version}`);
 			});
 
 		});

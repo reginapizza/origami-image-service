@@ -12,6 +12,7 @@ const mockProxyServer = module.exports.mockProxyServer = {
 };
 
 module.exports.mockProxyRequest = {
+	removeHeader: sinon.spy(),
 	setHeader: sinon.spy()
 };
 
