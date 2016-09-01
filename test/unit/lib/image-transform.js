@@ -733,7 +733,7 @@ describe('lib/image-transform', () => {
 			it('returns the expected URI', () => {
 				assert.strictEqual(
 					ImageTransform.resolveCustomSchemeUri('fticon:example', 'http://base/images'),
-					'http://base/images/fticon-old/v4/example.svg'
+					'http://base/images/fticonold/v4/example.svg'
 				);
 			});
 
@@ -885,7 +885,7 @@ describe('lib/image-transform', () => {
 	it('has a `schemeVersionMap` static property', () => {
 		assert.deepEqual(ImageTransform.schemeVersionMap, {
 			fthead: 'v1',
-			fticon: 'fticon-old/v4',
+			fticon: 'fticonold/v4',
 			ftlogo: 'v1',
 			ftpodcast: 'v1',
 			ftsocial: 'v1'
