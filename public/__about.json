@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"name": "origami-image-service",
+	"purpose": "Optimises and resizes images, and serves them to end users",
+	"audience": "public",
+	"primaryUrl": "https://image.webservices.ft.com/v1/",
+	"serviceTier": "gold",
+	"apiVersion": 1,
+	"apiVersions": [
+		{ "path": "/v1", "supportStatus": "active" },
+		{ "path": "/v2", "supportStatus": "experimental" }
+	],
+	"dateCreated": "2016-05-18",
+	"contacts": [
+		{ "name": "Origami team", "email": "origami.support@ft.com", "rel": "owner", "domain": "All support enquiries" }
+	],
+	"links": [
+		{"url": "https://github.com/Financial-Times/origami-image-service/issues", "category": "issues"},
+		{"url": "https://github.com/Financial-Times/origami-image-service", "category": "repo"},
+		{"url": "", "category": "deployment", "description": "Production Heroku app control panel"},
+		{"url": "https://dashboard.heroku.com/apps/origami-image-service-qa", "category": "deployment", "description": "QA Heroku app control panel"},
+		{"url": "http://grafana.ft.com/dashboard/db/origami-image-service", "category": "monitoring", "description": "Grafana dashboard"},
+		{"url": "", "category": "deployment", "description": "Akamai CDN control panel"},
+		{"url": "", "category": "monitoring", "description": "Pingdom check"},
+		{"url": "https://github.com/Financial-Times/origami-image-service#readme", "category": "documentation", "description": "README"},
+		{"url": "", "category": "monitoring", "description": "Runtime errors dashboard via Sentry"}
+	]
+}
