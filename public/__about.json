@@ -1,14 +1,14 @@
 {
 	"schemaVersion": 1,
-	"name": "image-service",
-	"purpose": "",
+	"name": "origami-image-service",
+	"purpose": "Optimises and resizes images, and serves them to end users",
 	"audience": "public",
 	"primaryUrl": "https://image.webservices.ft.com/v1/",
-	"serviceTier": "",
+	"serviceTier": "gold",
 	"apiVersion": 1,
 	"apiVersions": [
 		{ "path": "/v1", "supportStatus": "active" },
-		{ "path": "/v2", "supportStatus": "" }
+		{ "path": "/v2", "supportStatus": "experimental" }
 	],
 	"dateCreated": "2016-05-18",
 	"contacts": [
@@ -22,7 +22,6 @@
 		{"url": "http://grafana.ft.com/dashboard/db/origami-image-service", "category": "monitoring", "description": "Grafana dashboard"},
 		{"url": "", "category": "deployment", "description": "Akamai CDN control panel"},
 		{"url": "", "category": "monitoring", "description": "Pingdom check"},
-		{"url": "", "category": "documentation", "description": "Architecture diagram"},
 		{"url": "https://github.com/Financial-Times/origami-image-service#readme", "category": "documentation", "description": "README"},
 		{"url": "", "category": "monitoring", "description": "Runtime errors dashboard via Sentry"}
 	]
