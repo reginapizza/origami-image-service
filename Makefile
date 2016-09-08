@@ -48,7 +48,7 @@ deploy-ci:
 	@$(DONE)
 
 promote:
-	@heroku pipelines:promote
+	@heroku pipelines:promote --app origami-image-service-qa
 	@make change-request-prod
 	@$(DONE)
 
