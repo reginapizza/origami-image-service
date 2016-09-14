@@ -1,5 +1,7 @@
 'use strict';
 
+const itRespondsWithHeader = require('../helpers/it-responds-with-header');
+const itDoesNotRespondWithHeader = require('../helpers/it-does-not-respond-with-header');
 const itRespondsWithContentType = require('../helpers/it-responds-with-content-type');
 const itRespondsWithStatus = require('../helpers/it-responds-with-status');
 const setupRequest = require('../helpers/setup-request');
@@ -94,6 +96,16 @@ describe('GET /v2/images/raw…', function() {
 			this.request.expect(/image bgcolor must be a valid hex code or color name/i).end(done);
 		});
 
+	});
+
+	describe('when a dpr is set', function() {
+		setupRequest('GET', `/v2/images/raw/${testImageUris.fthead}?source=test&dpr=2`);
+		itRespondsWithHeader('content-Dpr', '2');
+	});
+
+	describe('when a dpr is not set', function() {
+		setupRequest('GET', `/v2/images/raw/${testImageUris.fthead}?source=test`);
+		itDoesNotRespondWithHeader('content-Dpr');
 	});
 
 });
