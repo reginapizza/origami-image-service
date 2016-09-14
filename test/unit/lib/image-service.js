@@ -168,9 +168,11 @@ describe('lib/image-service', () => {
 
 		describe('HTTP Proxy `proxyRes` handler', () => {
 			let proxyResponse;
+			let request;
+			let handler;
 
 			beforeEach(() => {
-				const handler = httpProxy.mockProxyServer.on.withArgs('proxyRes').firstCall.args[1];
+				handler = httpProxy.mockProxyServer.on.withArgs('proxyRes').firstCall.args[1];
 				proxyResponse = httpProxy.mockProxyResponse;
 				proxyResponse.headers = {
 					'foo': 'bar',
@@ -179,7 +181,8 @@ describe('lib/image-service', () => {
 					'content-length': '1234',
 					'content-disposition': 'foo'
 				};
-				handler(proxyResponse);
+				request = {};
+				handler(proxyResponse, request);
 			});
 
 			it('should set the headers of the proxy response to a subset of the original headers', () => {
@@ -192,6 +195,22 @@ describe('lib/image-service', () => {
 					'Connection': 'keep-alive',
 					'Vary': undefined
 				});
+			});
+
+			describe('when request.transform has a dpr', () => {
+				beforeEach(() => {
+					request = {
+						transform: {
+							getDpr: sinon.stub().returns(2)
+						}
+					};
+					handler(proxyResponse, request);
+				});
+
+				it('should include a `Content-Dpr` header in the response', () => {
+					assert.strictEqual(httpProxy.mockProxyResponse.headers['Content-Dpr'], 2);
+				});
+
 			});
 
 		});
