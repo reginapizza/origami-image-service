@@ -12,26 +12,22 @@
 				API Reference
 			</h1>
 
-			<h3>Fetch and image, transform and serve it</h3>
-
-			<ul>
-				<li>GET /v2/images/<var>:mode</var>/<var>:uri</var></li>
-				<li><s>GET /v2/images/<var>:mode</var>/<var>:uri</var>,<var>:uri</var></s></li>
-				<li><s>GET /v2/images/<var>:mode</var>?imageset=<var>:imageset</var></s></li>
-			</ul>
+			<h3>GET /v2/images/<var>:mode</var>/<var>:uri</var></h3>
+			<p>
+				Fetch and image, apply some transforms, and serve the transformed image.
+				The parameters in the URL can be configured as follows:
+			</p>
 
 			<div class="o-techdocs-table-wrapper">
 				<table>
 					<tr>
 						<th>Param</th>
-						<th>Where</th>
 						<th>Description</th>
 					</tr>
 					<tr id="mode">
 						<td><code>mode</code></td>
-						<td>URL</td>
 						<td>
-							<p>How output should be packaged.</p>
+							<p>How output should be sent.</p>
 							<dl>
 								<dt>raw</dt>
 								<dd>Output raw image data.</dd>
@@ -42,22 +38,48 @@
 					</tr>
 					<tr id="uri">
 						<td><code>uri</code></td>
-						<td>URL</td>
 						<td>
 							<p>URI to use as the image source, which can be HTTP/HTTPS</p>
 							<p>Source URIs <strong>must</strong> be URL-encoded when they're embedded in the URL of the image service, e.g. <code>/v2/images/raw/http%3A%2F%2Fexample%2Ecom%2Fimage%2Ejpg</code>. If you build image service URLs without help of <a href="//php.net/rawurlencode"><code>rawurlencode</code></a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a> (or similar) URLs with query strings or special characters (e.g. spaces) will break.</p>
 							<p>Supported source types (schemes):</p>
 							<dl>
 								<dt>http</dt>
-								<dd>HTTP URLs of source images anywhere on the public web, e.g. <code>http://example.com/image.jpg</code></dd>
+								<dd>HTTP URLs of source images anywhere on the public web</dd>
 								<dt>https</dt>
 								<dd>HTTPS URLs of source images anywhere on the public web</dd>
+								<dt>ftcms</dt>
+								<dd>UUID of image in Content API (both V1 and V2 are supported)</dd>
+								<dt>fticon-v1</dt>
+								<dd>Identifiers for the current icons within the <a href="http://registry.origami.ft.com/components/fticons">standard FT icon set</a></dd>
+								<dt>fthead-v1</dt>
+								<dd>Slugified names of known FT columnists and others from the <a href="http://registry.origami.ft.com/components/headshot-images">standard FT headshots set</a></dd>
+								<dt>ftsocial-v1</dt>
+								<dd>Identifiers for button images representing common social platforms from the <a href="http://registry.origami.ft.com/components/social-images">standard FT social images set</a></dd>
+								<dt>ftpodcast-v1</dt>
+								<dd>Logo from the <a href="http://registry.origami.ft.com/components/podcast-logos">FT podcast logo set</a></dd>
+								<dt>ftlogo-v1</dt>
+								<dd>FT and other sub-brand logos from the <a href="http://registry.origami.ft.com/components/logo-images">standard colour FT logo set</a></dd>
 							</dl>
 						</td>
 					</tr>
+				</table>
+			</div>
+
+			<h4>Query Parameters</h4>
+
+			<p>
+				Image transforms are applied by adding query parameters to the URL.
+				The available transforms are documented below:
+			</p>
+
+			<div class="o-techdocs-table-wrapper">
+				<table>
+					<tr>
+						<th>Param</th>
+						<th>Description</th>
+					</tr>
 					<tr id="width">
 						<td><code>width</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Width of desired output image in CSS pixels. When generating images for high-DPI displays <strong>avoid multiplying width</strong>, and use <code>dpr</code> argument instead.</p>
 							<p>Defaults to a width that maintains the aspect of the image, or the width of the source image if <code>height</code> is also not set.</p>
@@ -65,14 +87,12 @@
 					</tr>
 					<tr id="height">
 						<td><code>height</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Height of desired output image in CSS pixels (subject to `dpr` scaling). Defaults to a height that maintains the aspect of the image, or the height of the source image if <code>width</code> is also not set.</p>
 						</td>
 					</tr>
 					<tr id="dpr">
 						<td><code>dpr</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Device Pixel Ratio, i.e. number of image pixels per CSS pixel. The default is <code>1</code>, which gives the standard 1:1 ratio of image pixels to CSS pixels. Set to <code>2</code> for high-DPI ("Retina") displays. Request to the image service with <code>width=100<wbr>&amp;dpr=2</code> will output image 200 pixels wide, but optimized to be displayed with CSS <code>width:100px</code></p>
 							<p>Note that browsers don't automatically adjust intrinsic size of images with higher DPI, so you need'll need to use some "responsive image" solution, e.g. set explicit width or height, use <code>image-set()</code> or <code>srcset</code> attribute.</p>
@@ -80,7 +100,6 @@
 					</tr>
 					<tr id="fit">
 						<td><code>fit</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Type of transform to apply if the source aspect ratio does not perfectly match the target (subset of rules defined by CSS <a href="http://www.w3.org/TR/css3-images/#the-object-fit"><code>object-fit</code> property</a>):</p>
 							<dl>
@@ -95,14 +114,12 @@
 					</tr>
 					<tr id="bgcolor">
 						<td><code>bgcolor</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Fallback background colour to apply when the output image format does not support transparency (i.e., JPEG). Ignored if the image supports transparency. Specified as three- or six-character RGB hex code, e.g. <code>00ff00</code></p>
 						</td>
 					</tr>
 					<tr id="tint">
 						<td><code>tint</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Replaces colours in the image. Tinting only works when the source image is an SVG, and colours can be either hex codes or named colours. Different numbers of colours (separated by commas) behave differently:</p>
 							<ol start="0">
@@ -114,7 +131,6 @@
 					</tr>
 					<tr id="format">
 						<td><code>format</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Desired output format. Conversion to <abbr>GIF</abbr> is not supported, but animated <abbr>GIF</abbr>s will be passed through as-is.</p>
 							<dl>
@@ -131,14 +147,12 @@
 					</tr>
 					<tr id="quality">
 						<td><code>quality</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Compression level for lossy encoding. May be set to <code>lowest</code>, <code>low</code>, <code>medium</code>, <code>high</code>, <code>highest</code>, or <code>lossless</code>. If lossless is not supported by chosen image format (JPG), the highest level will be used instead. Default is <code>medium</code>.</p>
 						</td>
 					</tr>
 					<tr id="source">
 						<td><code>source</code></td>
-						<td>Querystring</td>
 						<td>
 							<p>Name of the application making the request, used for audit purposes. Set to a descriptive name for the site or application in which the service is being used.</p>
 						</td>
