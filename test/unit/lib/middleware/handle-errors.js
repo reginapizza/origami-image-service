@@ -56,7 +56,7 @@ describe('lib/middleware/handle-errors', () => {
 				assert.calledOnce(express.mockResponse.render);
 				assert.calledWith(express.mockResponse.render, 'error');
 				assert.deepEqual(express.mockResponse.render.firstCall.args[1], {
-					layout: 'layout',
+					layout: 'main',
 					title: 'Error 123',
 					message: 'test error',
 					explanation: ''

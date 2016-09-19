@@ -1,47 +1,48 @@
+
 <div class="o-techdocs-container">
 	<div class="o-techdocs-layout">
-		<div class="o-techdocs-main o-techdocs-main--fullwidth">
-			<div class="o-techdocs-content">
 
-				<div class="o-grid-row">
-					<div data-o-grid-colspan="12 M9">
-						<h1 class="component-header">
-							{{title}}
-						</h1>
-					</div>
-				</div>
-
-				<div class="o-grid-row">
-					<div data-o-grid-colspan="12">
-						<div class="o-table-wrapper">
-							<table class="o-table o-table--horizontal-lines o-table--vertical-lines o-table--horizontal-borders o-table--vertical-borders" data-o-component="o-table" data-o-table--js="">
-								<tbody>
-									<tr>
-										<th>Image Service v1</th>
-										<th>Image Service v2</th>
-									</tr>
-									{{#each image}}
-										<tr>
-											<td>
-												<a href="https://image.webservices.ft.com/v1{{this}}">
-													<img src="https://image.webservices.ft.com/v1{{this}}" alt="" class="test-image" />
-												</a>
-											</td>
-											<td>
-												<a href="/v2{{this}}">
-													<img src="/v2{{this}}" alt="" class="test-image" />
-												</a>
-											</td>
-										</tr>
-									{{/each}}
-								</tbody>
-							</table>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
+		<div class="o-techdocs-sidebar">
+			{{>navigation}}
 		</div>
+
+		<div class="o-techdocs-main o-techdocs-content">
+
+			<h1>
+				Version Comparison
+			</h1>
+
+			<p>
+				This page contains a table of images with transforms applied in both v1 and v2 of
+				the image service. Any differences between the two should be illustrated here.
+			</p>
+
+			<div class="o-table-wrapper">
+				<table class="o-table o-table--horizontal-lines o-table--vertical-lines o-table--horizontal-borders o-table--vertical-borders" data-o-component="o-table" data-o-table--js="">
+					<tbody>
+						<tr>
+							<th>Image Service v1</th>
+							<th>Image Service v2</th>
+						</tr>
+						{{#each image}}
+							<tr>
+								<td>
+									<a href="https://image.webservices.ft.com/v1{{this}}">
+										<img src="https://image.webservices.ft.com/v1{{this}}" alt="" class="test-image" />
+									</a>
+								</td>
+								<td>
+									<a href="/v2{{this}}">
+										<img src="/v2{{this}}" alt="" class="test-image" />
+									</a>
+								</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
 	</div>
 </div>
