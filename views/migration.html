@@ -1,0 +1,75 @@
+
+<div class="o-techdocs-container">
+	<div class="o-techdocs-layout">
+
+		<div class="o-techdocs-sidebar">
+			{{>navigation}}
+		</div>
+
+		<div class="o-techdocs-main o-techdocs-content">
+
+			<h1>
+				Migration Guide
+			</h1>
+
+			<p>
+				There are some breaking changes in the API between v1 and v2 of the Image Service.
+				We'll outline all of these below. The best way to check whether your images still
+				work is to replace <code>v1</code> with <code>v2</code> in your image URLs and
+				compare the two.
+			</p>
+
+			<h2>Image modes</h2>
+
+			<p>
+				The image modes <code>metadata</code>, <code>data</code>, and <code>data-utfhack</code>
+				have been removed from the service. The <code>debug</code> mode has been added.
+			</p>
+
+			<h2>Imagesets</h2>
+
+			<p>
+				The ability to produce an image from multiple sources (spriting) has been removed
+				from the service. This means that the following endpoints are no longer supported:
+			</p>
+
+			<ul>
+				<li>GET /v2/images/<var>:uri</var>,<var>:uri</var></li>
+				<li>GET /v1/images/<var>:mode</var>?imageset=<var>:imageset</var></li>
+			</ul>
+
+			<h2>Transforms/Querystrings</h2>
+
+			<h3>Scheme</h3>
+
+			<p>
+				The <code>scheme</code> query parameter is no longer supported, as multiple images
+				cannot be requested at once. The scheme should form part of the image URI.
+			</p>
+
+			<h3>Imageset</h3>
+
+			<p>
+				The <code>imageset</code> query parameter is no longer supported, as multiple images
+				cannot be requested at once.
+			</p>
+
+			<h3>Tint</h3>
+
+			<p>
+				The <code>tint</code> query parameter no longer works with JPEG or PNG images. SVG
+				images can still be tinted, and they no longer require a colour to be specified twice.
+			</p>
+
+			<h3>Compression</h3>
+
+			<p>
+				The <code>compression</code> query parameter is no longer supported, use
+				<code>quality</code> alone to manipulate the level of compression that is applied
+				to the image.
+			</p>
+
+		</div>
+
+	</div>
+</div>

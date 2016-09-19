@@ -86,7 +86,8 @@ describe('lib/image-service', () => {
 			const options = express.firstCall.args[0];
 			assert.isObject(options);
 			assert.isTrue(options.withHandlebars);
-			assert.strictEqual(options.layoutsDir, path.resolve(__dirname, '../../../views'));
+			assert.strictEqual(options.layoutsDir, path.resolve(__dirname, '../../../views/layouts'));
+			assert.deepEqual(options.partialsDir, [path.resolve(__dirname, '../../../views')]);
 		});
 
 		it('configures assets (turns them off)', () => {
