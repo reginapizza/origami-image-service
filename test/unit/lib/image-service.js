@@ -251,6 +251,30 @@ describe('lib/image-service', () => {
 			assert.calledWithExactly(express.mockApp.use, morgan.mockMiddleware);
 		});
 
+		it('registers a "/__gtg" route', () => {
+			assert.calledWith(express.mockApp.get, '/__gtg');
+		});
+
+		describe('"/__gtg" route', () => {
+			let gtgRoute;
+
+			beforeEach(() => {
+				gtgRoute = express.mockApp.get.withArgs('/__gtg').firstCall.args[1];
+				gtgRoute(express.mockRequest, express.mockResponse);
+			});
+
+			it('sets the response status to 200', () => {
+				assert.calledOnce(express.mockResponse.status);
+				assert.calledWithExactly(express.mockResponse.status, 200);
+			});
+
+			it('sets the response body to "OK"', () => {
+				assert.calledOnce(express.mockResponse.send);
+				assert.calledWithExactly(express.mockResponse.send, 'OK');
+			});
+
+		});
+
 		it('loads all of the routes', () => {
 			assert.calledOnce(requireAll);
 			assert.isObject(requireAll.firstCall.args[0]);
