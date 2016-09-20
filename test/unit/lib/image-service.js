@@ -262,11 +262,16 @@ describe('lib/image-service', () => {
 			assert.isFunction(requireAll.firstCall.args[0].resolve);
 		});
 
-		it('calls each route with the Express application', () => {
+		it('mounts an express router at root and as `/origami/service/image/`', () => {
+			assert.calledWithExactly(express.mockApp.use, express.mockRouter);
+			assert.calledWithExactly(express.mockApp.use, '/origami/service/image/', express.mockRouter);
+		});
+
+		it('calls each route with the Express application and Router', () => {
 			const route = sinon.spy();
 			requireAll.firstCall.args[0].resolve(route);
 			assert.calledOnce(route);
-			assert.calledWithExactly(route, express.mockApp);
+			assert.calledWithExactly(route, express.mockApp, express.mockRouter);
 		});
 
 		it('mounts middleware to handle routes that are not found', () => {

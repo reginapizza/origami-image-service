@@ -17,6 +17,8 @@ const mockApp = module.exports.mockApp = {
 
 const mockServer = module.exports.mockServer = {};
 
+const mockRouter = module.exports.mockRouter = {};
+
 module.exports.mockRequest = {
 	query: {},
 	params: {}
@@ -32,3 +34,4 @@ module.exports.mockResponse = {
 
 mockApp.listen.resolves(mockServer);
 express.returns(mockApp);
+express.Router = sinon.stub().returns(mockRouter);
