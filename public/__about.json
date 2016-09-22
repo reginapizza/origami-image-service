@@ -17,12 +17,12 @@
 	"links": [
 		{"url": "https://github.com/Financial-Times/origami-image-service/issues", "category": "issues"},
 		{"url": "https://github.com/Financial-Times/origami-image-service", "category": "repo"},
-		{"url": "", "category": "deployment", "description": "Production Heroku app control panel"},
+		{"url": "https://dashboard.heroku.com/pipelines/be91fac7-5b0e-40f5-abd1-b81b72ad1b97", "category": "deployment", "description": "Production Heroku app control panel"},
 		{"url": "https://dashboard.heroku.com/apps/origami-image-service-qa", "category": "deployment", "description": "QA Heroku app control panel"},
 		{"url": "http://grafana.ft.com/dashboard/db/origami-image-service", "category": "monitoring", "description": "Grafana dashboard"},
-		{"url": "", "category": "deployment", "description": "Akamai CDN control panel"},
-		{"url": "", "category": "monitoring", "description": "Pingdom check"},
+		{"url": "https://my.pingdom.com/newchecks/checks#check=2301115", "category": "monitoring", "description": "Production Pingdom checks (EU)"},
+		{"url": "https://my.pingdom.com/newchecks/checks#check=2301117", "category": "monitoring", "description": "Production Pingdom checks (US)"},
 		{"url": "https://github.com/Financial-Times/origami-image-service#readme", "category": "documentation", "description": "README"},
-		{"url": "", "category": "monitoring", "description": "Runtime errors dashboard via Sentry"}
+		{"url": "https://sentry.io/nextftcom/origami-image-service-producti/", "category": "monitoring", "description": "Production Sentry dashboard"}
 	]
 }
