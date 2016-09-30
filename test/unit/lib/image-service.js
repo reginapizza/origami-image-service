@@ -169,11 +169,14 @@ describe('lib/image-service', () => {
 		});
 
 		describe('HTTP Proxy `proxyRes` handler', () => {
+			let clock;
 			let proxyResponse;
 			let request;
 			let handler;
 
 			beforeEach(() => {
+				clock = sinon.useFakeTimers();
+				clock.tick(10000); // tick 10 seconds
 				handler = httpProxy.mockProxyServer.on.withArgs('proxyRes').firstCall.args[1];
 				proxyResponse = httpProxy.mockProxyResponse;
 				proxyResponse.headers = {
@@ -181,10 +184,16 @@ describe('lib/image-service', () => {
 					'cache-control': 'public, max-age=123',
 					'content-type': 'image/jpeg',
 					'content-length': '1234',
-					'content-disposition': 'foo'
+					'content-disposition': 'foo',
+					'etag': '123',
+					'last-modified': 'some time'
 				};
 				request = {};
 				handler(proxyResponse, request);
+			});
+
+			afterEach(() => {
+				clock.restore();
 			});
 
 			it('should set the headers of the proxy response to a subset of the original headers', () => {
@@ -195,6 +204,9 @@ describe('lib/image-service', () => {
 					'Content-Type': 'image/jpeg',
 					'Content-Length': '1234',
 					'Connection': 'keep-alive',
+					'Etag': '123',
+					'Expires': 'Thu, 08 Jan 1970 00:00:10 GMT',
+					'Last-Modified': 'some time',
 					'Vary': undefined
 				});
 			});
