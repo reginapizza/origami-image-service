@@ -233,6 +233,17 @@ describe('lib/image-transform', () => {
 
 			});
 
+			describe('when `value` is "auto" and the `uri` property does not have a path', () => {
+
+				it('[get] returns "jpg"', () => {
+					ImageTransform.sanitizeEnumerableValue.restore();
+					instance.setUri('fticon:cross');
+					instance.setFormat();
+					assert.strictEqual(instance.getFormat(), 'jpg');
+				});
+
+			});
+
 		});
 
 		describe('.setQuality() / .getQuality()', () => {
