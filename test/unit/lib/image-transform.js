@@ -894,6 +894,7 @@ describe('lib/image-transform', () => {
 	it('has a `validFormats` static property', () => {
 		assert.deepEqual(ImageTransform.validFormats, [
 			'auto',
+			'gif',
 			'jpg',
 			'png',
 			'svg'
