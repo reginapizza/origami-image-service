@@ -4,7 +4,7 @@
 	"purpose": "Optimises and resizes images, and serves them to end users",
 	"audience": "public",
 	"primaryUrl": "https://image.webservices.ft.com/v1/",
-	"serviceTier": "gold",
+	"serviceTier": "bronze",
 	"apiVersion": 1,
 	"apiVersions": [
 		{ "path": "/v1", "supportStatus": "active" },
