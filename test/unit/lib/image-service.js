@@ -188,7 +188,11 @@ describe('lib/image-service', () => {
 					'etag': '123',
 					'last-modified': 'some time'
 				};
-				request = {};
+				request = {
+					headers: {
+						'x-image-format': 'foo'
+					}
+				};
 				handler(proxyResponse, request);
 			});
 
@@ -213,10 +217,8 @@ describe('lib/image-service', () => {
 
 			describe('when request.transform has a dpr', () => {
 				beforeEach(() => {
-					request = {
-						transform: {
-							getDpr: sinon.stub().returns(2)
-						}
+					request.transform = {
+						getDpr: sinon.stub().returns(2)
 					};
 					handler(proxyResponse, request);
 				});
@@ -225,6 +227,28 @@ describe('lib/image-service', () => {
 					assert.strictEqual(httpProxy.mockProxyResponse.headers['Content-Dpr'], 2);
 				});
 
+			});
+
+			describe('when the request has an `X-Image-Format` header set to "webp"', () => {
+				beforeEach(() => {
+					request.headers['x-image-format'] = 'webp';
+					handler(proxyResponse, request);
+				});
+
+				it('should echo the `X-Image-Format` header in the response', () => {
+					assert.strictEqual(httpProxy.mockProxyResponse.headers['X-Image-Format'], 'webp');
+				});
+			});
+
+			describe('when the request has an `X-Image-Format` header set to "jpegxr"', () => {
+				beforeEach(() => {
+					request.headers['x-image-format'] = 'jpegxr';
+					handler(proxyResponse, request);
+				});
+
+				it('should echo the `X-Image-Format` header in the response', () => {
+					assert.strictEqual(httpProxy.mockProxyResponse.headers['X-Image-Format'], 'jpegxr');
+				});
 			});
 
 		});
