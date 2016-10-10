@@ -178,61 +178,6 @@ describe('lib/image-transform', () => {
 				assert.strictEqual(instance.getFormat(), 'sanitized');
 			});
 
-			describe('when `value` is "auto"', () => {
-
-				it('[get] returns "jpg"', () => {
-					ImageTransform.sanitizeEnumerableValue.restore();
-					instance.setQuality();
-					instance.setFormat();
-					assert.strictEqual(instance.getFormat(), 'jpg');
-				});
-
-			});
-
-			describe('when `value` is "auto" and the `quality` property is set to "lossless"', () => {
-
-				it('[get] returns "png"', () => {
-					ImageTransform.sanitizeEnumerableValue.restore();
-					instance.setQuality('lossless');
-					instance.setFormat();
-					assert.strictEqual(instance.getFormat(), 'png');
-				});
-
-			});
-
-			describe('when `value` is "auto" and the `uri` property ends in ".svg"', () => {
-
-				it('[get] returns "svg"', () => {
-					ImageTransform.sanitizeEnumerableValue.restore();
-					instance.setUri('http://example.com/foo.svg');
-					instance.setFormat();
-					assert.strictEqual(instance.getFormat(), 'svg');
-				});
-
-			});
-
-			describe('when `value` is "auto" and the `uri` property ends in ".png"', () => {
-
-				it('[get] returns "png"', () => {
-					ImageTransform.sanitizeEnumerableValue.restore();
-					instance.setUri('http://example.com/foo.png?a=b');
-					instance.setFormat();
-					assert.strictEqual(instance.getFormat(), 'png');
-				});
-
-			});
-
-			describe('when `value` is "auto" and the `uri` property ends in an unknown extension', () => {
-
-				it('[get] returns "jpg"', () => {
-					ImageTransform.sanitizeEnumerableValue.restore();
-					instance.setUri('http://example.com/foo.img?a=b');
-					instance.setFormat();
-					assert.strictEqual(instance.getFormat(), 'jpg');
-				});
-
-			});
-
 		});
 
 		describe('.setQuality() / .getQuality()', () => {
@@ -894,6 +839,7 @@ describe('lib/image-transform', () => {
 	it('has a `validFormats` static property', () => {
 		assert.deepEqual(ImageTransform.validFormats, [
 			'auto',
+			'gif',
 			'jpg',
 			'png',
 			'svg'

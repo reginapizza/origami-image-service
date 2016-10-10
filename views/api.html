@@ -132,10 +132,12 @@
 					<tr id="format">
 						<td><code>format</code></td>
 						<td>
-							<p>Desired output format. Conversion to <abbr>GIF</abbr> is not supported, but animated <abbr>GIF</abbr>s will be passed through as-is.</p>
+							<p>Desired output format.</p>
 							<dl>
 								<dt>auto (default)</dt>
-								<dd>Use <code>Accept</code> header from request to determine the best output format</dd>
+								<dd>Use <code>Accept</code> header from request to determine the best output format. For more information, see <a href="http://cloudinary.com/documentation/image_transformations#automatic_format_selection">Cloudinary's documentation</a></dd>
+								<dt>gif</dt>
+								<dd>Format images as <abbr>GIF</abbr></dd>
 								<dt>jpg</dt>
 								<dd>Format images as <abbr>JPEG</abbr></dd>
 								<dt>png</dt>

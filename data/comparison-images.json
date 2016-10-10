@@ -42,5 +42,6 @@
 	"/images/raw/fthead:brian-groom?source=test",
 	"/images/raw/fthead:brian-groom?source=test&dpr=2&width=100",
 	"/images/raw/fthead:brian-groom?source=test&dpr=1&height=100",
-	"/images/raw/fthead:brian-groom?source=test&dpr=2&width=100&height=300"
+	"/images/raw/fthead:brian-groom?source=test&dpr=2&width=100&height=300",
+	"/images/raw/ftcms:4245e172-8b65-11e6-8cb7-e7ada1d123b1?source=test&fit=scale-down&width=200"
 ]

@@ -31,7 +31,7 @@ describe('lib/transformers/imgix', () => {
 		});
 
 		it('returns an Imgix fetch URL', () => {
-			assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop');
+			assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop');
 		});
 
 		describe('when `transform` has a `width` property', () => {
@@ -42,7 +42,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop&w=123');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop&w=123');
 			});
 
 		});
@@ -55,7 +55,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop&h=123');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop&h=123');
 			});
 
 		});
@@ -68,7 +68,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop&dpr=2');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop&dpr=2');
 			});
 
 		});
@@ -81,7 +81,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=clip');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=clip');
 			});
 
 		});
@@ -94,7 +94,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop');
 			});
 
 		});
@@ -107,7 +107,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=max');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=max');
 			});
 
 		});
@@ -133,7 +133,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=35&fit=crop');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=35&fit=crop');
 			});
 
 		});
@@ -146,7 +146,7 @@ describe('lib/transformers/imgix', () => {
 			});
 
 			it('returns the expected Imgix fetch URL', () => {
-				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=jpg&quality=72&fit=crop&bg=ff0000');
+				assert.strictEqual(imgixUrl, 'https://foo-source.imgix.net/http%3A%2F%2Fexample.com%2F?fm=auto&quality=72&fit=crop&bg=ff0000');
 			});
 
 		});
