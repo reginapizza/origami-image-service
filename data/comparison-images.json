@@ -1,47 +1,286 @@
 [
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&width=200",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&height=150",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&width=200&height=200",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&width=200&height=200&fit=cover",
-	"/images/raw/ftcms:2dac88f0-b273-4e48-9c7d-9078db39db55?source=app&width=500&fit=scale-down&dpr=2",
-	"/images/raw/ftcms:b2d974a1-8a4d-4829-ad41-94291eb97e30?source=app&width=146&fit=scale-down&dpr=2",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&width=200&dpr=2",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1T1hv1e?source=test&width=200&height=200&fit=contain",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1T1hv1e?source=test&width=200&height=200&fit=scale-down",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&format=jpg",
-	"/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=test&format=png",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffd%2FGhostscript_Tiger.svg?source=test&format=svg",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffa%2FApple_logo_black.svg?source=test&format=png",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffd%2FGhostscript_Tiger.svg?source=test&format=png",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=lowest",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=low",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=medium",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=high",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=highest",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&quality=lossless",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&bgcolor=ff0000&format=png",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&bgcolor=ffff00&format=jpg",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&bgcolor=hotpink&format=jpg",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffa%2FApple_logo_black.svg?source=test&bgcolor=turquoise&format=jpg",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffd%2FGhostscript_Tiger.svg?source=test&bgcolor=turquoise&format=jpg",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&tint",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&tint=ff0000",
-	"/images/raw/http%3A%2F%2Fbit.ly%2F1ToEqxv?source=test&tint=ff0000,00ff00",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&tint",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&tint=ff0000",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F47%2FPNG_transparency_demonstration_1.png?source=test&tint=ff0000,00ff00",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffa%2FApple_logo_black.svg?source=test&tint=ff0000,ff0000&format=svg",
-	"/images/raw/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ffd%2FGhostscript_Tiger.svg?source=test&tint=ff0000,ff0000&format=svg",
-	"/images/raw/http:/next-geebee.ft.com/assets/icons/brand-ft-masthead.svg?source=test&tint=",
-	"/images/raw/http%3A%2F%2Fnext-geebee.ft.com%2Fassets%2Ficons%2Fipad-portrait.svg?source=test&tint=%2327757B,%2327757B&format=svg",
-	"/images/raw/http%3A%2F%2Fnext-geebee.ft.com%2Fassets%2Ficons%2Fsocial-facebook.svg?source=test&tint=%2374736C,%2374736C&format=svg",
-	"/images/raw/http%3A%2F%2Fnext-geebee.ft.com%2Fassets%2Ficons%2Fbrand-fast-ft.svg?source=test&tint=%23333333,%23333333&format=png&width=20",
-	"/images/raw/fthead:brian-groom?source=test&dpr=2",
-	"/images/raw/fthead:brian-groom?source=test&dpr=1",
-	"/images/raw/fthead:brian-groom?source=test",
-	"/images/raw/fthead:brian-groom?source=test&dpr=2&width=100",
-	"/images/raw/fthead:brian-groom?source=test&dpr=1&height=100",
-	"/images/raw/fthead:brian-groom?source=test&dpr=2&width=100&height=300",
-	"/images/raw/ftcms:4245e172-8b65-11e6-8cb7-e7ada1d123b1?source=test&fit=scale-down&width=200"
+	{
+		"name": "No transforms",
+		"description": "An image with no transforms applied.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": ""
+	},
+	{
+		"name": "Sizing",
+		"isSection": true
+	},
+	{
+		"name": "Width",
+		"description": "An image with just a width transform applied.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "width=200"
+	},
+	{
+		"name": "Height",
+		"description": "An image with just a height transform applied.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "height=150"
+	},
+	{
+		"name": "Width and height",
+		"description": "An image with width and height transforms applied.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "width=200&height=200"
+	},
+	{
+		"name": "Cropping strategies",
+		"isSection": true
+	},
+	{
+		"name": "Width, height, and cover",
+		"description": "An image with width and height transforms applied, and a fit transform set to 'cover'.",
+		"shouldMatch": true,
+		"uri": "ftcms:b35b7a62-8fce-11e6-8df8-d3778b55a923",
+		"transform": "width=200&height=200&fit=cover"
+	},
+	{
+		"name": "Width, height, and contain",
+		"description": "An image with width and height transforms applied, and a fit transform set to 'contain'.",
+		"shouldMatch": true,
+		"uri": "ftcms:b35b7a62-8fce-11e6-8df8-d3778b55a923",
+		"transform": "width=200&height=200&fit=contain"
+	},
+	{
+		"name": "Width, height, and scale-down",
+		"description": "An image with width and height transforms applied, and a fit transform set to 'scale-down'.",
+		"shouldMatch": true,
+		"uri": "ftcms:b35b7a62-8fce-11e6-8df8-d3778b55a923",
+		"transform": "width=200&height=200&fit=scale-down"
+	},
+	{
+		"name": "Device pixel ratio",
+		"isSection": true
+	},
+	{
+		"name": "Width and DPR 1",
+		"description": "An image with a width transform applied, and dpr transform set to 1.",
+		"shouldMatch": true,
+		"uri": "ftcms:2dac88f0-b273-4e48-9c7d-9078db39db55",
+		"transform": "width=200&dpr=1"
+	},
+	{
+		"name": "Width and DPR 2",
+		"description": "An image with a width transform applied, and dpr transform set to 2.",
+		"shouldMatch": true,
+		"uri": "ftcms:2dac88f0-b273-4e48-9c7d-9078db39db55",
+		"transform": "width=200&dpr=2"
+	},
+	{
+		"name": "Quality",
+		"isSection": true
+	},
+	{
+		"name": "Lowest",
+		"description": "An image with the quality transform set to 'lowest'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=lowest"
+	},
+	{
+		"name": "Low",
+		"description": "An image with the quality transform set to 'low'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=low"
+	},
+	{
+		"name": "Medium",
+		"description": "An image with the quality transform set to 'medium'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=medium"
+	},
+	{
+		"name": "High",
+		"description": "An image with the quality transform set to 'high'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=high"
+	},
+	{
+		"name": "Highest",
+		"description": "An image with the quality transform set to 'highest'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=highest"
+	},
+	{
+		"name": "Lossless",
+		"description": "An image with the quality transform set to 'lossless'.",
+		"shouldMatch": true,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "width=250&quality=lossless"
+	},
+	{
+		"name": "Format",
+		"isSection": true
+	},
+	{
+		"name": "JPEG",
+		"description": "An image converted to a JPEG.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "format=jpg"
+	},
+	{
+		"name": "PNG",
+		"description": "An image converted to a PNG.",
+		"shouldMatch": true,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "format=png"
+	},
+	{
+		"name": "GIF",
+		"description": "An image converted to a GIF. Will not match because v1 does not support conversion to GIF.",
+		"shouldMatch": false,
+		"uri": "ftcms:a60ae24b-b87f-439c-bf1b-6e54946b4cf2",
+		"transform": "format=gif"
+	},
+	{
+		"name": "SVG",
+		"description": "An SVG image served as SVG.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg",
+		"transform": "format=svg"
+	},
+	{
+		"name": "SVG to PNG",
+		"description": "A simple SVG converted to a PNG image.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+		"transform": "format=png"
+	},
+	{
+		"name": "SVG to PNG",
+		"description": "A complex SVG converted to a PNG image. Will not match because v1 does not deal with compound paths in SVGs.",
+		"shouldMatch": false,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg",
+		"transform": "format=png"
+	},
+	{
+		"name": "Custom schemes",
+		"isSection": true
+	},
+	{
+		"name": "FTHEAD",
+		"description": "A headshot image using the 'fthead' scheme.",
+		"shouldMatch": true,
+		"uri": "fthead:lionel-barber",
+		"transform": "width=200&format=png"
+	},
+	{
+		"name": "FTICON",
+		"description": "An icon using the 'fticon' scheme.",
+		"shouldMatch": true,
+		"uri": "fticon:cross",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTICON-V1",
+		"description": "An icon using the 'fticon-v1' scheme.",
+		"shouldMatch": true,
+		"uri": "fticon-v1:cross",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTLOGO",
+		"description": "An icon using the 'ftlogo' scheme.",
+		"shouldMatch": true,
+		"uri": "ftlogo:brand-ft-logo-square",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTPODCAST",
+		"description": "An icon using the 'ftpodcast' scheme.",
+		"shouldMatch": true,
+		"uri": "ftpodcast:arts",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTSOCIAL",
+		"description": "An icon using the 'ftsocial' scheme.",
+		"shouldMatch": true,
+		"uri": "ftsocial:twitter",
+		"transform": "format=svg"
+	},
+	{
+		"name": "Background colour",
+		"isSection": true
+	},
+	{
+		"name": "PNG with background",
+		"description": "A transparent PNG with a background set to '#ffff00'. The background should not appear as the image supports transparency.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
+		"transform": "bgcolor=ffff00&format=png"
+	},
+	{
+		"name": "PNG with background converted to JPEG",
+		"description": "A transparent PNG converted to a JPEG with a background set to '#ffff00'.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
+		"transform": "bgcolor=ffff00&format=jpg"
+	},
+	{
+		"name": "PNG with background converted to JPEG",
+		"description": "A transparent PNG converted to a JPEG with a background set to 'hotpink'.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
+		"transform": "bgcolor=hotpink&format=jpg"
+	},
+	{
+		"name": "SVG with background converted to JPEG",
+		"description": "An SVG with transparency converted to a JPEG with a background set to 'hotpink'.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+		"transform": "bgcolor=hotpink&format=jpg&width=100"
+	},
+	{
+		"name": "Tinting",
+		"isSection": true
+	},
+	{
+		"name": "SVG with tint",
+		"description": "A simple SVG image with the tint transform set.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+		"transform": "tint=ff0000,ff0000&format=svg"
+	},
+	{
+		"name": "SVG with tint",
+		"description": "A complex SVG image with the tint transform set.",
+		"shouldMatch": true,
+		"uri": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg",
+		"transform": "tint=ff0000,ff0000&format=svg"
+	},
+	{
+		"name": "JPEG with tint",
+		"description": "A JPEG image with the tint transform set to the default value. Will not match because v2 does not support tinting of non-SVG images.",
+		"shouldMatch": false,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "tint"
+	},
+	{
+		"name": "JPEG with tint",
+		"description": "A JPEG image with the tint transform set to red. Will not match because v2 does not support tinting of non-SVG images.",
+		"shouldMatch": false,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "tint=ff0000"
+	},
+	{
+		"name": "JPEG with tint",
+		"description": "A JPEG image with the tint transform set to red and green. Will not match because v2 does not support tinting of non-SVG images.",
+		"shouldMatch": false,
+		"uri": "ftcms:3520df36-8c20-11e6-8cb7-e7ada1d123b1",
+		"transform": "tint=ff0000,00ff00"
+	}
 ]
