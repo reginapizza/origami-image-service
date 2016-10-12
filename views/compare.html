@@ -17,26 +17,50 @@
 				the image service. Any differences between the two should be illustrated here.
 			</p>
 
-			<div class="o-table-wrapper">
-				<table class="o-table o-table--horizontal-lines o-table--vertical-lines o-table--horizontal-borders o-table--vertical-borders" data-o-component="o-table" data-o-table--js="">
-					<tbody>
+			<div class="o-table-wrapper o-techdocs-table-wrapper">
+				<table>
+					<thead>
 						<tr>
+							<th>Info</th>
 							<th>Image Service v1</th>
 							<th>Image Service v2</th>
 						</tr>
+					</thead>
+					<tbody>
 						{{#each images}}
-							<tr>
-								<td style="width: 50%;">
-									<a href="https://image.webservices.ft.com/v1{{.}}">
-										<img src="https://image.webservices.ft.com/v1{{.}}" alt="" class="test-image" />
-									</a>
-								</td>
-								<td style="width: 50%;">
-									<a href="v2{{.}}">
-										<img src="v2{{.}}" alt="" class="test-image" />
-									</a>
-								</td>
-							</tr>
+							{{#if isSection}}
+								<tr>
+									<th colspan="3" class="compare-section">
+										{{name}}
+									</th>
+								</tr>
+							{{else}}
+								<tr>
+									<td style="width: 33%;">
+										<p>
+											<b>{{name}}{{#description}}:{{/description}}</b>
+											{{description}}<br/>
+											{{#shouldMatch}}
+												<span class="comparison-image-match comparison-image-match--yes">
+													Images should match
+												</span>
+											{{else}}
+												<span class="comparison-image-match comparison-image-match--no">
+													Images should not match
+												</span>
+											{{/shouldMatch}}
+										</p>
+									</td>
+									<td style="width: 33%;" data-component="comparison-image">
+										<img src="{{v1Url}}" alt="{{name}}" /><br/>
+										<a href="{{v1Url}}">Image served through v1</a>
+									</td>
+									<td style="width: 33%;" data-component="comparison-image">
+										<img src="{{v2Url}}" alt="{{name}}" /><br/>
+										<a href="{{v2Url}}">Image served through v2</a>
+									</td>
+								</tr>
+							{{/if}}
 						{{/each}}
 					</tbody>
 				</table>
