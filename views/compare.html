@@ -21,9 +21,9 @@
 				<table>
 					<thead>
 						<tr>
-							<th>Info</th>
-							<th>Image Service v1</th>
-							<th>Image Service v2</th>
+							<th class="comparison-result-column">Info</th>
+							<th class="comparison-result-column">Image Service v1</th>
+							<th class="comparison-result-column">Image Service v2</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,26 +36,26 @@
 								</tr>
 							{{else}}
 								<tr>
-									<td style="width: 33%;">
+									<td class="comparison-result-column">
 										<p>
 											<b>{{name}}{{#description}}:{{/description}}</b>
 											{{description}}<br/>
 											{{#shouldMatch}}
 												<span class="comparison-image-match comparison-image-match--yes">
-													Images should match
+													Images should match visually
 												</span>
 											{{else}}
 												<span class="comparison-image-match comparison-image-match--no">
-													Images should not match
+													Images should not match visually
 												</span>
 											{{/shouldMatch}}
 										</p>
 									</td>
-									<td style="width: 33%;" data-component="comparison-image">
+									<td class="comparison-result-column" data-component="comparison-image">
 										<img src="{{v1Url}}" alt="{{name}}" /><br/>
 										<a href="{{v1Url}}">Image served through v1</a>
 									</td>
-									<td style="width: 33%;" data-component="comparison-image">
+									<td class="comparison-result-column" data-component="comparison-image">
 										<img src="{{v2Url}}" alt="{{name}}" /><br/>
 										<a href="{{v2Url}}">Image served through v2</a>
 									</td>
