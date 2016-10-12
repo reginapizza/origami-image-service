@@ -167,6 +167,52 @@
 		"transform": "format=png"
 	},
 	{
+		"name": "Custom schemes",
+		"isSection": true
+	},
+	{
+		"name": "FTHEAD",
+		"description": "A headshot image using the 'fthead' scheme.",
+		"shouldMatch": true,
+		"uri": "fthead:lionel-barber",
+		"transform": "width=200&format=png"
+	},
+	{
+		"name": "FTICON",
+		"description": "An icon using the 'fticon' scheme.",
+		"shouldMatch": true,
+		"uri": "fticon:cross",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTICON-V1",
+		"description": "An icon using the 'fticon-v1' scheme.",
+		"shouldMatch": true,
+		"uri": "fticon-v1:cross",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTLOGO",
+		"description": "An icon using the 'ftlogo' scheme.",
+		"shouldMatch": true,
+		"uri": "ftlogo:brand-ft-logo-square",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTPODCAST",
+		"description": "An icon using the 'ftpodcast' scheme.",
+		"shouldMatch": true,
+		"uri": "ftpodcast:arts",
+		"transform": "width=100&format=png"
+	},
+	{
+		"name": "FTSOCIAL",
+		"description": "An icon using the 'ftsocial' scheme.",
+		"shouldMatch": true,
+		"uri": "ftsocial:twitter",
+		"transform": "format=svg"
+	},
+	{
 		"name": "Background colour",
 		"isSection": true
 	},
