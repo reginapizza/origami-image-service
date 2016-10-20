@@ -321,6 +321,42 @@
 		"v1ImageSize": "890"
 	},
 	{
+		"name": "FTICON-V1",
+		"description": "An icon using the 'fticon-v1' scheme.",
+		"shouldMatch": true,
+		"uri": "fticon-v1:cross",
+		"transform": "width=100&format=png",
+		"v1ImageFormat": "image/png",
+		"v1ImageSize": "650"
+	},
+	{
+		"name": "FTICON with no format set",
+		"description": "An icon using the 'fticon' scheme with no format set.",
+		"shouldMatch": true,
+		"uri": "fticon:cross",
+		"transform": "",
+		"v1ImageFormat": "image/svg+xml",
+		"v1ImageSize": "265"
+	},
+	{
+		"name": "FTICON-V1 with no format set",
+		"description": "An icon using the 'fticon-v1' scheme with no format set.",
+		"shouldMatch": true,
+		"uri": "fticon-v1:cross",
+		"transform": "",
+		"v1ImageFormat": "image/svg+xml",
+		"v1ImageSize": "212"
+	},
+	{
+		"name": "FTICON with no format set and a background color",
+		"description": "An icon using the 'fticon' scheme with no format set and a background color.",
+		"shouldMatch": true,
+		"uri": "fticon:cross",
+		"transform": "bgcolor=ff0000",
+		"v1ImageFormat": "image/svg+xml",
+		"v1ImageSize": "265"
+	},
+	{
 		"name": "Background colour",
 		"isSection": true
 	},
