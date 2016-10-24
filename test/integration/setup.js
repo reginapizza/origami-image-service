@@ -13,7 +13,7 @@ const mockLog = {
 before(function() {
 	return imageService({
 		cloudinaryAccountName: 'financial-times', // TODO set up a test account for this?
-		customSchemeStore: 'http://example.com/images',
+		customSchemeStore: 'http://origami-imageset-uploader-s3.s3.amazonaws.com',
 		environment: 'test',
 		log: mockLog,
 		logLevel: process.env.LOG_LEVEL || 'trace',
