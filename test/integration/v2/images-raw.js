@@ -22,56 +22,67 @@ describe('GET /v2/images/raw…', function() {
 	describe('/http://… (HTTP scheme unencoded)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.http}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/jpeg');
 	});
 
 	describe('/https://… (HTTPS scheme unencoded)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.https}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/jpeg');
 	});
 
 	describe('/http%3A%2F%2F… (HTTP scheme encoded)', function() {
 		setupRequest('GET', `/v2/images/raw/${encodeURIComponent(testImageUris.http)}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/jpeg');
 	});
 
 	describe('/https%3A%2F%2F… (HTTPS scheme encoded)', function() {
 		setupRequest('GET', `/v2/images/raw/${encodeURIComponent(testImageUris.https)}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/jpeg');
 	});
 
 	describe('/ftcms:… (ftcms scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftcms}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/jpeg');
 	});
 
-	xdescribe('/fticon:… (fticon scheme)', function() {
+	describe('/fticon:… (fticon scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.fticon}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/svg+xml');
 	});
 
-	xdescribe('/fthead:… (fthead scheme)', function() {
+	describe('/fthead:… (fthead scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.fthead}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/png');
 	});
 
-	xdescribe('/ftsocial:… (ftsocial scheme)', function() {
+	describe('/ftsocial:… (ftsocial scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftsocial}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/svg+xml');
 	});
 
-	xdescribe('/ftpodcast:… (ftpodcast scheme)', function() {
+	describe('/ftpodcast:… (ftpodcast scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftpodcast}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/png');
 	});
 
-	xdescribe('/ftlogo:… (ftlogo scheme)', function() {
+	describe('/ftlogo:… (ftlogo scheme)', function() {
 		setupRequest('GET', `/v2/images/raw/${testImageUris.ftlogo}?source=test`);
 		itRespondsWithStatus(200);
+		itRespondsWithContentType('image/svg+xml');
 	});
 
 	describe('?imageset=… (image set)', function() {
 		setupRequest('GET', '/v2/images/raw?imageset=%5B%7B%22uri%22%3A%22http%3A%2F%2Fexample.com%2Fimage.jpg%22%2C%22width%22%3A100%7D%5D&source=test');
 		itRespondsWithStatus(501);
+		itRespondsWithContentType('text/html');
 	});
 
 	describe('without a `source` query parameter', function() {

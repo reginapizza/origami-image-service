@@ -30,7 +30,7 @@ test-unit-coverage:
 	@$(DONE)
 
 test-integration:
-	@NODE_ENV=test mocha test/integration --recursive
+	@NODE_ENV=test mocha test/integration --recursive --timeout 10000 --slow 2000
 	@$(DONE)
 
 
