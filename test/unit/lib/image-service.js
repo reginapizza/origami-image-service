@@ -253,6 +253,28 @@ describe('lib/image-service', () => {
 				});
 			});
 
+			describe('when the proxy response has an `X-Cld-Error` header', () => {
+				let response;
+
+				beforeEach(() => {
+					proxyResponse.headers['x-cld-error'] = 'Cloudinary Error';
+					proxyResponse.statusCode = 123;
+					response = {};
+					handler(proxyResponse, request, response);
+				});
+
+				it('sets the headers of the proxy response to an empty object', () => {
+					assert.deepEqual(httpProxy.mockProxyResponse.headers, {});
+				});
+
+				it('sets the response `cloudinaryError` property to an error object representing the Cloudinary error', () => {
+					assert.instanceOf(response.cloudinaryError, Error);
+					assert.strictEqual(response.cloudinaryError.message, 'Cloudinary Error');
+					assert.strictEqual(response.cloudinaryError.status, 123);
+				});
+
+			});
+
 		});
 
 		it('adds a listener on the HTTP proxy\'s `error` event', () => {
