@@ -431,6 +431,22 @@ describe('lib/image-service', () => {
 
 		});
 
+		describe('when `config.suppressLogs` is `true`', () => {
+
+			beforeEach(() => {
+				morgan.reset();
+				express.mockApp.use.reset();
+				config.suppressLogs = true;
+				returnedPromise = imageService(config);
+			});
+
+			it('does not mount Morgan middleware', () => {
+				assert.notCalled(morgan);
+				assert.neverCalledWith(express.mockApp.use, morgan.mockMiddleware);
+			});
+
+		});
+
 	});
 
 });
