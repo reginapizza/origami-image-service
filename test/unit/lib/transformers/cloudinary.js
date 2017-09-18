@@ -205,6 +205,19 @@ describe('lib/transformers/cloudinary', () => {
 
 		});
 
+		describe('when `transform` has an `immutable` property', () => {
+
+			beforeEach(() => {
+				transform.setImmutable(true);
+				cloudinaryUrl = cloudinaryTransform(transform, options);
+			});
+
+			it('returns the expected Cloudinary fetch URL', () => {
+				assert.match(cloudinaryUrl, new RegExp('^https://res.cloudinary.com/testaccount/image/fetch/s--[^/]+--/c_fill,f_auto,fl_any_format.force_strip.progressive.immutable_cache,q_72/http://example.com/$'));
+			});
+
+		});
+
 		describe('when `transform` is not an instance of ImageTransform', () => {
 
 			it('throws an error', () => {
