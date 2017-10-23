@@ -33,7 +33,7 @@ Running Locally
 Before we can run the application, we'll need to install dependencies:
 
 ```sh
-make install
+npm install
 ```
 
 Run the application in development mode with
@@ -97,7 +97,7 @@ The service can also be configured by sending HTTP headers, these would normally
 Testing
 -------
 
-The tests are split into unit tests and integration tests. To run tests on your machine you'll need to install [Node.js] and run `make install`. Then you can run the following commands:
+The tests are split into unit tests and integration tests. To run tests on your machine you'll need to install [Node.js] and run `npm install`. Then you can run the following commands:
 
 ```sh
 make test              # run all the tests
