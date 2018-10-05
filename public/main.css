@@ -1,32 +1,32 @@
 @charset "UTF-8";
 
-/* Typographic overrides */
+.o-layout__header .o-header-services__top .o-header-services__ftlogo {
+	background-image: url("https://www.ft.com/__origami/service/image/v2/images/raw/ftlogo-v1:origami?source=origami-build-service");
+}
+
+td img {
+	width: 100%;
+}
+
+.url-builder-preview {
+	flex-basis: 75%;
+	margin-left: 20px;
+}
+
+.url-builder-output {
+	width: 98%;
+	height: 100px;
+}
+
+.flex-container {
+	display: flex;
+}
+
+.o-table--responsive-flat td {
+	width: 0;
+}
+
 dt {
 	font-weight: bold;
-}
-
-/* Table overrides */
-td {
-	vertical-align: top;
-}
-td p:first-child {
-	margin-top: 0;
-}
-
-/* Header overrides */
-@media (min-width: 46.25em) {
-	.o-header__primary__left {
-		width: 303px;
-	}
-}
-
-/* Example table */
-.example-column {
-	width: 50% !important;
-}
-
-/* URL builder */
-.url-builder-output {
-	min-width: 100%;
-	min-height: 100px;
+	line-height: 1.5;
 }
