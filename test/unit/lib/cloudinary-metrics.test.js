@@ -30,6 +30,7 @@ describe('lib/cloudinary-metrics', () => {
 
 		beforeEach(() => {
 			sinon.stub(global, 'setInterval');
+			global.setInterval.returns({unref: sinon.spy()});
 			pingUsage = sinon.stub(CloudinaryMetrics.prototype, 'pingUsage');
 			bindPingUsage = sinon.spy(pingUsage, 'bind');
 			options = origamiService.mockApp.ft.options = {
@@ -119,7 +120,7 @@ describe('lib/cloudinary-metrics', () => {
 
 				beforeEach(() => {
 					cloudinaryError = new Error('mock cloudinary error');
-					origamiService.mockApp.ft.metrics.count.reset();
+					origamiService.mockApp.ft.metrics.count.resetHistory();
 					cloudinary.api.usage.rejects(cloudinaryError);
 					return instance.pingUsage().catch();
 				});
@@ -140,7 +141,7 @@ describe('lib/cloudinary-metrics', () => {
 
 				beforeEach(() => {
 					cloudinaryError = new Error('mock cloudinary error');
-					origamiService.mockApp.ft.metrics.count.reset();
+					origamiService.mockApp.ft.metrics.count.resetHistory();
 					cloudinary.api.usage.throws(cloudinaryError);
 					instance.pingUsage();
 				});
