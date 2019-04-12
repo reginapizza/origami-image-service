@@ -186,6 +186,7 @@ describe('GET /v2/images/raw…', function() {
 		itRespondsWithContentType('text/html');
 
 		it('responds with a descriptive error message', function(done) {
+			this.timeout(30000);
 			this.request.expect(/the source parameter is required/i).end(done);
 		});
 
@@ -215,7 +216,7 @@ describe('GET /v2/images/raw…', function() {
 
 	describe('when a custom scheme image is not found', function() {
 		setupRequest('GET', '/v2/images/raw/fthead-v1:notahead?source=test');
-		itRespondsWithStatus(404);
+		itRespondsWithStatus(400);
 		itRespondsWithContentType('text/html');
 	});
 
