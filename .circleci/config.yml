@@ -65,7 +65,7 @@ jobs:
       - run: sudo ~/project/.circleci/install_heroku.sh
       - run: ~/project/.circleci/create_netrc_file.sh
       - run: sudo ~/project/.circleci/install_terraform.sh
-      - run: heroku pipelines:promote --app origami-image-service-qa-eu --to origami-image-service-eu,origami-image-service-us
+      - run: heroku pipelines:promote --app origami-image-service-qa --to origami-image-service-eu,origami-image-service-us
       - run: rm -f terraform.tfstate fastly/terraform/dev_override.tf fastly/terraform/qa_override.tf fastly/terraform/domains_override.tf
       - run: terraform init fastly/terraform/
       - run: terraform import -config=fastly/terraform fastly_service_v1.app $FASTLY_SERVICE_ID_PROD
