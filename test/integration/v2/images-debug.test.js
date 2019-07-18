@@ -68,7 +68,7 @@ describe('GET /v2/images/debug…', function () {
 		},
 		capiv2: {
 			requestedUrl: 'ftcms:03b59122-a148-11e9-a282-2df48f366f7d',
-			resolvedUrl: 'http://com.ft.imagepublish.upp-prod-us.s3.amazonaws.com/03b59122-a148-11e9-a282-2df48f366f7d'
+			resolvedUrl: 'http://com.ft.imagepublish.upp-prod-eu.s3.amazonaws.com/03b59122-a148-11e9-a282-2df48f366f7d'
 		},
 		spark: {
 			requestedUrl: 'ftcms:c3fec7fb-aba9-42ee-a745-a62c872850d0',
