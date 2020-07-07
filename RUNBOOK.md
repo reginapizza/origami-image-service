@@ -79,13 +79,14 @@ PartiallyAutomated
 
 Manual
 
-## Architecture Diagram
-
-https://docs.google.com/drawings/d/1By1z0mwDG8QlOAvCgPLq23rn_K2NDyYQ7FLh-gH-X-8">https://docs.google.com/drawings/d/1By1z0mwDG8QlOAvCgPLq23rn_K2NDyYQ7FLh-gH-X-8
 
 ## Architecture
 
 This is mostly a Node.js application which acts as a proxy between the end user and a third-party service named Cloudinary.
+
+### Architecture Diagram
+
+https://docs.google.com/drawings/d/1By1z0mwDG8QlOAvCgPLq23rn_K2NDyYQ7FLh-gH-X-8">https://docs.google.com/drawings/d/1By1z0mwDG8QlOAvCgPLq23rn_K2NDyYQ7FLh-gH-X-8
 
 ### Fetching an image
 
