@@ -231,6 +231,9 @@ describe('lib/middleware/process-image-request', () => {
 						syscall: 'syscall',
 						code: 'ECONNRESET',
 					});
+					scope.get('/twitter.svg-EAI_AGAIN').replyWithError({
+						message: 'uh oh the DNS lookup timed out'
+					});
 					scope.get('/twitter.svg-ENOTFOUND').replyWithError({
 						message: 'uh oh the domain has no dns record',
 						syscall: 'getaddrinfo',
@@ -277,6 +280,29 @@ describe('lib/middleware/process-image-request', () => {
 
 				});
 
+				context('due to the dns lookup timing out', ()=>{
+					beforeEach((done) => {
+						next.resetHistory();
+						mockImageTransform.getUri = () => 'https://ft.com/twitter.svg-EAI_AGAIN';
+						middleware(request, response, error => {
+							next(error);
+							done();
+						});
+					});
+
+					it('calls `next` with an error', () => {
+						assert.isTrue(next.calledOnce);
+						assert.isInstanceOf(next.firstCall.firstArg, Error);
+					});
+
+					it('sets the error `skipSentry` property to true', () => {
+						assert.isTrue(next.firstCall.firstArg.skipSentry);
+					});
+
+					it('sets the error `cacheMaxAge` property to "30s"', () => {
+						assert.strictEqual(next.firstCall.firstArg.cacheMaxAge, '30s');
+					});
+				});
 				context('due to the connection being reset', ()=>{
 					beforeEach((done) => {
 						next.resetHistory();
