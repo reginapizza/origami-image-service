@@ -16,6 +16,19 @@ export PATH := $(PATH):$(NPM_BIN)
 run-dev:
 	@nodemon --ext html,js,json --exec "npm run dev"
 
+# Run the unit tests using mocha
+test-unit:
+	mocha "test/unit/**/*.test.js" --recursive --reporter mocha-github-actions-reporter ${CI:+--forbid-only}
+
+# Run the unit tests using mocha and generating
+# a coverage report if nyc or istanbul are installed
+test-unit-coverage:
+	nyc --reporter=text --reporter=html mocha "test/unit/**/*.test.js" -- --recursive --reporter mocha-github-actions-reporter ${CI:+--forbid-only}
+
+# Run the integration tests using mocha
+test-integration:
+	mocha "test/integration/**/*.test.js" --recursive --reporter mocha-github-actions-reporter ${CI:+--forbid-only} --timeout $(INTEGRATION_TIMEOUT) --slow $(INTEGRATION_SLOW) $(INTEGRATION_FLAGS)
+
 
 # Configuration
 # -------------
