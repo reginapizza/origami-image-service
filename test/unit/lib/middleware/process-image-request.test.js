@@ -262,7 +262,7 @@ describe('lib/middleware/process-image-request', () => {
 
 				it('does not error', () => {
 					assert.isTrue(next.calledOnce);
-					assert.isUndefined(next.firstCall.firstArg); 
+					assert.isUndefined(next.firstCall.firstArg);
 				});
 			});
 
@@ -276,7 +276,6 @@ describe('lib/middleware/process-image-request', () => {
 					});
 					scope.get('/twitter.svg-ECONNRESET').replyWithError({
 						message: 'uh oh the connection reset',
-						syscall: 'syscall',
 						code: 'ECONNRESET',
 					});
 					scope.get('/twitter.svg-UNABLE_TO_VERIFY_LEAF_SIGNATURE').replyWithError({
@@ -289,7 +288,6 @@ describe('lib/middleware/process-image-request', () => {
 					});
 					scope.get('/twitter.svg-ENETUNREACH').replyWithError({
 						message: 'uh oh the network is unreachable',
-						syscall: 'syscall',
 						code: 'ENETUNREACH',
 					});
 					scope.get('/twitter.svg-EAI_AGAIN').replyWithError({
@@ -310,7 +308,6 @@ describe('lib/middleware/process-image-request', () => {
 					});
 					scope.get('/twitter.svg-ETIMEDOUT').replyWithError({
 						message: 'uh oh the connection timed out',
-						syscall: 'syscall',
 						code: 'ETIMEDOUT',
 					});
 					scope.get('/twitter.svg-CERT_HAS_EXPIRED').replyWithError({

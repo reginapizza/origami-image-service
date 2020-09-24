@@ -265,7 +265,6 @@ describe('lib/middleware/get-cms-url', () => {
 					// V2 errors
 					resetError = new Error('mock error');
 					resetError.code = 'ECONNRESET';
-					resetError.syscall = 'mock-syscall';
 					scope = nock('http://prod-upp-image-read.ft.com').persist();
 					scope.head('/mock-id8').replyWithError(resetError);
 
@@ -277,7 +276,7 @@ describe('lib/middleware/get-cms-url', () => {
 
 				it('calls `next` with a descriptive error', () => {
 					assert.instanceOf(responseError, Error);
-					assert.strictEqual(responseError.message, 'Connection reset when requesting "http://prod-upp-image-read.ft.com/mock-id8" (mock-syscall)');
+					assert.strictEqual(responseError.message, 'Connection reset when requesting "http://prod-upp-image-read.ft.com/mock-id8"');
 				});
 
 			});
@@ -294,7 +293,6 @@ describe('lib/middleware/get-cms-url', () => {
 					// V2 errors
 					timeoutError = new Error('mock error');
 					timeoutError.code = 'ETIMEDOUT';
-					timeoutError.syscall = 'mock-syscall';
 					scope = nock('http://prod-upp-image-read.ft.com').persist();
 					scope.head('/mock-id9').replyWithError(timeoutError);
 
@@ -306,42 +304,9 @@ describe('lib/middleware/get-cms-url', () => {
 
 				it('calls `next` with a descriptive error', () => {
 					assert.instanceOf(responseError, Error);
-					assert.strictEqual(responseError.message, 'Request timed out when requesting "http://prod-upp-image-read.ft.com/mock-id9" (mock-syscall)');
+					assert.strictEqual(responseError.message, 'Request timed out when requesting "http://prod-upp-image-read.ft.com/mock-id9"');
 				});
-
 			});
-
-			describe('when the request socket times out', () => {
-				let responseError;
-				let timeoutError;
-				let scope;
-
-				beforeEach(done => {
-					origamiService.mockRequest.url = 'mock-url';
-					origamiService.mockRequest.params.imageUrl = 'ftcms:mock-id10';
-
-					// V2 errors
-					timeoutError = new Error('mock error');
-					timeoutError.code = 'ESOCKETTIMEOUT';
-					timeoutError.syscall = 'mock-syscall';
-					scope = nock('http://prod-upp-image-read.ft.com').persist();
-					scope.head('/mock-id10').replyWithError(timeoutError);
-
-					middleware(origamiService.mockRequest, origamiService.mockResponse, error => {
-						responseError = error;
-						done();
-					});
-				});
-
-				it('calls `next` with a descriptive error', () => {
-					assert.instanceOf(responseError, Error);
-					assert.strictEqual(responseError.message, 'Request socket timed out when requesting "http://prod-upp-image-read.ft.com/mock-id10" (mock-syscall)');
-				});
-
-			});
-
 		});
-
 	});
-
 });

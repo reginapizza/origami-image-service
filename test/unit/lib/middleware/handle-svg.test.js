@@ -27,7 +27,6 @@ describe('lib/middleware/handle-svg', function () {
 
 		scope.get('/twitter.svg-ECONNRESET').replyWithError({
 			message: 'uh oh the connection reset',
-			syscall: 'syscall',
 			code: 'ECONNRESET',
 		});
 		scope.get('/twitter.svg-ENOTFOUND').replyWithError({
@@ -36,7 +35,6 @@ describe('lib/middleware/handle-svg', function () {
 		});
 		scope.get('/twitter.svg-ETIMEDOUT').replyWithError({
 			message: 'uh oh the connection timed out',
-			syscall: 'syscall',
 			code: 'ETIMEDOUT',
 		});
 	});
@@ -75,7 +73,7 @@ describe('lib/middleware/handle-svg', function () {
 				it('calls `next` with a descriptive error', () => {
 					assert.isTrue(next.calledOnce);
 					assert.isInstanceOf(next.firstCall.args[0], Error);
-					assert.strictEqual(next.firstCall.args[0].message, 'Connection reset when requesting "https://ft.com/twitter.svg-ECONNRESET" (syscall)');
+					assert.strictEqual(next.firstCall.args[0].message, 'Connection reset when requesting "https://ft.com/twitter.svg-ECONNRESET"');
 				});
 			});
 
@@ -112,7 +110,7 @@ describe('lib/middleware/handle-svg', function () {
 				it('calls `next` with a descriptive error', () => {
 					assert.isTrue(next.calledOnce);
 					assert.isInstanceOf(next.firstCall.args[0], Error);
-					assert.strictEqual(next.firstCall.args[0].message, 'Request timed out when requesting "https://ft.com/twitter.svg-ETIMEDOUT" (syscall)');
+					assert.strictEqual(next.firstCall.args[0].message, 'Request timed out when requesting "https://ft.com/twitter.svg-ETIMEDOUT"');
 				});
 
 			});
